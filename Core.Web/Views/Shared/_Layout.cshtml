@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <!-- meta tag -->
+    <meta charset="utf-8" />
+    <title>
+        Map Node - Metaverse, ISO, Web3, Token Launchpad
+    </title>
+    <meta name="description" content="" />
+    <!-- responsive tag -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- favicon -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/tokenicon.png" />
+    <!-- Bootstrap v4.4.1 css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/animate.css" />
+    <!-- magnific css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/magnific-popup.css" />
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/owl.carousel.css" />
+    <!-- off canvas css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/off-canvas.css" />
+    <!-- flaticon css  -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/ico-moon-fonts.css" />
+    <!-- spacing css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/sc-spacing.css" />
+    <!--Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/slick-theme.min.css" />
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/style.css" />
+    <!-- responsive css -->
+    <link rel="stylesheet" type="text/css" href="~/client-side/earntoken/assets/css/responsive.css" />
+
+    <link rel="stylesheet" type="text/css" href="~/lib/jstree/jstree.bundle.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <!--Preloader area start here-->
+    <!--Preloader area End here-->
+
+    <div class="HomeV4Bg">
+
+    </div>
+    <div class="homeV4Bodycontent">
+        <section class="loader_first">
+            <div class="circular-spinner"></div>
+        </section>
+
+        <canvas id="canvas" class="home4FireFlyBG"></canvas>
+
+        <div class="home_v4_body_items">
+            @await Html.PartialAsync("_Header")
+
+            @RenderBody()
+
+            @await Html.PartialAsync("_Footer")
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_ModalUtility")
+
+    @*<div class="Gamfi_footerBtnSect">
+            <div class="Gamfi_footerBtnContent">
+                <span class="frameLeft"><img src="~/client-side/earntoken/assets/images/homeV2/bottomShape-left.png" class="img-fluid" /></span>
+                <span class="frameright"><img src="~/client-side/earntoken/assets/images/homeV2/bottomShape-right.png" class="img-fluid" /></span>
+                <div class="rocket">
+                    <img src="~/client-side/earntoken/assets/images/homeV2/rocket.png" alt="img" class="img-fluid" />
+                </div>
+                <a href="igo-apply.html">APPLY FOR PROJECT</a>
+            </div>
+        </div>*@
+    <!-- Modal Share icons End-->
+
+    <input type="hidden" value="@ViewBag.RefCode" class="dapp_ref_code" />
+    <!-- modernizr js -->
+    <script src="~/client-side/earntoken/assets/js/modernizr-2.8.3.min.js"></script>
+    <!-- jquery latest version -->
+    <script src="~/client-side/earntoken/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap v4.4.1 js -->
+    <script src="~/client-side/earntoken/assets/js/bootstrap.min.js"></script>
+    <!-- popup.min js -->
+    <script src="~/client-side/earntoken/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- imagesloaded.pkgd.min js -->
+    <script src="~/client-side/earntoken/assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- wow js -->
+    <script src="~/client-side/earntoken/assets/js/wow.min.js"></script>
+    <!-- jquery counterup js -->
+    <script src="~/client-side/earntoken/assets/js/jquery.counterup.min.js"></script>
+    <!-- counter top js -->
+    <script src="~/client-side/earntoken/assets/js/waypoints.min.js"></script>
+    <!-- owl.carousel js -->
+    <script src="~/client-side/earntoken/assets/js/owl.carousel.min.js"></script>
+    <!-- plugins js -->
+    <script src="~/client-side/earntoken/assets/js/plugins.js"></script>
+    <!-- Time Counter js -->
+    <script src="~/client-side/earntoken/assets/js/time-counter.js"></script>
+    <!-- main js -->
+    <script src="~/client-side/earntoken/assets/js/main.js"></script>
+    <!-- slickSlider js -->
+    <script src="~/client-side/earntoken/assets/js/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <!--Wallet Connect-->
+    @*    <script type="text/javascript" src="https://unpkg.com/web3modal"></script>
+        <script src="https://unpkg.com/@@walletconnect/web3-provider" type="application/javascript"></script>*@
+
+
+    <script src="~/lib/jstree/jstree.bundle.js"></script>
+    <script src="~/client-app/controllers/network/index.js" asp-append-version="true"></script>
+    @*<script src="~/client-app/shared/defi-helper.js"></script>*@
+    <script>
+        //DeFiHelper.DappRefCode = '@(ViewBag.RefCode)';
+        //var dapp = new DeFiHelper.DApp();
+        //dapp.init();
+
+
+        var networkObj = new NetworkController();
+        networkObj.initialize();
+    </script>
+
+
+    <script>
+        $('.slickSlider_2022').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 1
+                }
+            }
+            ]
+        });
+    </script>
+
+    <!-- RoadMap Tab -->
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    <!-- Proect Tab -->
+    <script>
+        function openProject(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("ProjectV2_tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("ProjectV2_tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("OpenProject").click();
+    </script>
+
+    <!--RoadMapV2 Slide-->
+    <script>
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: true,
+            focusOnSelect: true
+        });
+
+        $('a[data-slide]').click(function (e) {
+            e.preventDefault();
+            var slideno = $(this).data('slide');
+            $('.slider-nav').slick('slickGoTo', slideno - 1);
+        });
+    </script>
+
+    <!--Our Partnar Show hide-->
+    <script>
+        $('.ShowMoreBtnSect button').click(function () {
+            $('.ShowMoreBtnSect button').toggleClass('active');
+        });
+
+        $(document).ready(function () {
+            $(".ShowMoreBtnSect button").click(function () {
+                $(".OurPartnatList .overlay").fadeToggle();
+                $(".Our_PARTNERSContnetSect .OurPartnatList li.hidden").fadeToggle();
+            });
+        });
+    </script>
+
+    <!-- FAQ JS -->
+    <script>
+        // Get all Accordion and Panel
+        let accHeading = document.querySelectorAll(".accordion");
+        let accPanel = document.querySelectorAll(".accordion-panel");
+
+        for (let i = 0; i < accHeading.length; i++) {
+            // Execute whenever an accordion is clicked
+            accHeading[i].onclick = function () {
+                if (this.nextElementSibling.style.maxHeight) {
+                    hidePanels(); // Hide All open Panels
+                } else {
+                    showPanel(this); // Show the panel
+                }
+            };
+        }
+
+        // Function to Show a Panel
+        function showPanel(elem) {
+            hidePanels();
+            elem.classList.add("active");
+            elem.nextElementSibling.style.maxHeight = elem.nextElementSibling.scrollHeight + "px";
+        }
+
+        // Function to Hide all shown Panels
+        function hidePanels() {
+            for (let i = 0; i < accPanel.length; i++) {
+                accPanel[i].style.maxHeight = null;
+                accHeading[i].classList.remove("active");
+            }
+        }
+    </script>
+
+
+    <script>
+        let c = init("canvas"),
+            w = (canvas.width = window.innerWidth),
+            h = (canvas.height = window.innerHeight);
+        //initiation
+
+        class firefly {
+            constructor() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.s = Math.random() * 2;
+                this.ang = Math.random() * 2 * Math.PI;
+                this.v = this.s * this.s / 4;
+            }
+            move() {
+                this.x += this.v * Math.cos(this.ang);
+                this.y += this.v * Math.sin(this.ang);
+                this.ang += Math.random() * 20 * Math.PI / 180 - 10 * Math.PI / 180;
+            }
+            show() {
+                c.beginPath();
+                c.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+                c.fillStyle = "#fddba3";
+                c.fill();
+            }
+        }
+
+        let f = [];
+
+        function draw() {
+            if (f.length < 100) {
+                for (let j = 0; j < 10; j++) {
+                    f.push(new firefly());
+                }
+            }
+            //animation
+            for (let i = 0; i < f.length; i++) {
+                f[i].move();
+                f[i].show();
+                if (f[i].x < 0 || f[i].x > w || f[i].y < 0 || f[i].y > h) {
+                    f.splice(i, 1);
+                }
+            }
+        }
+
+        let mouse = {};
+        let last_mouse = {};
+
+        canvas.addEventListener(
+            "mousemove",
+            function (e) {
+                last_mouse.x = mouse.x;
+                last_mouse.y = mouse.y;
+
+                mouse.x = e.pageX - this.offsetLeft;
+                mouse.y = e.pageY - this.offsetTop;
+            },
+            false
+        );
+
+        function init(elemid) {
+            let canvas = document.getElementById(elemid),
+                c = canvas.getContext("2d"),
+                w = (canvas.width = window.innerWidth),
+                h = (canvas.height = window.innerHeight);
+            c.fillStyle = "rgba(30,30,30,1)";
+            c.fillRect(0, 0, w, h);
+            return c;
+        }
+
+        window.requestAnimFrame = (function () {
+            return (
+                window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback);
+                }
+            );
+        });
+
+        function loop() {
+            window.requestAnimFrame(loop);
+            c.clearRect(0, 0, w, h);
+            draw();
+        }
+
+        window.addEventListener("resize", function () {
+            (w = canvas.width = window.innerWidth),
+                (h = canvas.height = window.innerHeight);
+            loop();
+        });
+
+        loop();
+        setInterval(loop, 1000 / 60);
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!--mustache-->
+    <script src="~/lib/mustache/mustache.js"></script>
+    <!-- twbs-pagination -->
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
+
+    <script src="~/client-app/shared/be.js"></script>
+
+
+
+    @Html.AntiForgeryToken()
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

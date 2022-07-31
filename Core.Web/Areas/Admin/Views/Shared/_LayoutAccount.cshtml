@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="../../../">
+    <title>@(CommonConstants.PROJECT_NAME) - Metaverse, ISO, Web3, Token Launchpad</title>
+    <meta name="description" content="@(CommonConstants.PROJECT_NAME)" />
+    <meta name="keywords" content="@(CommonConstants.PROJECT_NAME)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@(CommonConstants.PROJECT_NAME)" />
+    <meta property="og:url" content="@(CommonConstants.PROJECT_NAME)" />
+    <meta property="og:site_name" content="@(CommonConstants.PROJECT_NAME)" />
+    <link rel="canonical" href="@(CommonConstants.PROJECT_NAME)" />
+    <link rel="icon" href="~/images/tokenicon.png">
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href="~/admin-side/demo1/dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin-side/demo1/dist/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+    @RenderSection("Styles", required: false)
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="bg-dark">
+        <!--begin::Main-->
+        @RenderBody()
+        <!--end::Main-->
+    <!--begin::Javascript-->
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="~/admin-side/demo1/dist/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/js/scripts.bundle.js"></script>
+    <!--end::Javascript-->
+
+    <script src="~/admin-app/shared/be.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+<!--end::Body-->
+
+</html>

@@ -1,0 +1,305 @@
+﻿@section Styles{
+    <link href="~/client-app/controllers/nft-market/index.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/client-app/controllers/nft-market/index.js"></script>
+    <script>
+        var nftMarketObj = new NFTMarketController();
+        nftMarketObj.initialize();
+    </script>
+}
+
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="/">Home</a>
+                        <span class="sub-title">Market</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Market</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs  Section End -->
+<!-- Previous Section Start -->
+<div class="gamfi-explore-content gamfi-previous-section pt-70 md-pt-80 pb-200 md-pb-200">
+    <div class="container">
+        <!-- Tab Menu Section Start -->
+        <div class="project-menu-area d-flex align-items-center justify-content-between">
+            <div class="project-left-menu">
+                <ul class="nav" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link active" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#open-igo" type="button" role="tab"
+                                aria-controls="open-igo" aria-selected="true">
+                            Cup of Coffee
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#upcoming" type="button" role="tab"
+                                aria-controls="upcoming" aria-selected="false">
+                            Coffee Machine
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link" id="shop-tab" data-bs-toggle="tab"
+                                data-bs-target="#shop" type="button" role="tab"
+                                aria-controls="shop" aria-selected="false">
+                            Coffee Shop
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="project-right-menu">
+                <ul class="al-access-menu">
+                    <li class="block">
+                        <a href="#">All Block Chain</a>
+                        <ul class="sub-menu">
+                            <li><a href="#"><img src="~/client-side/earntoken/assets/images/project/previous-image.png" alt="icon"> Binance (BSC)</a></li>
+                            <li><a href="#"><img src="~/client-side/earntoken/assets/images/project/previous-image2.png" alt="icon"> Ethereum (ETH)</a></li>
+                            <li><a href="#"><img src="~/client-side/earntoken/assets/images/project/previous-image3.png" alt="icon"> Polygon</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab Content Section Start -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Open IGO Content Start -->
+            <div class="tab-pane fade show active" id="open-igo" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row align-items-center" id="cup-content">
+                </div>
+            </div>
+            <script id="cup-template" type="x-tmpl-mustache">
+                 <div class="col-lg-4 col-md-6">
+                    <div class="project-shape-item hover-shape-border">
+                        <div class="project-item ">
+                            <div class="project-info">
+                                <a href="javascript:void(0)">
+                                    <img src="{{ImageUrl}}" alt="Explore-Image" />
+                                </a>
+                                <div class="project-auother">
+                                    <h4 class="mb-10"><a href="#" class="text-warning">{{Name}}</a></h4>
+                                    <div class="dsc text-white">{{Code}} / {{Price}} MNI</div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header d-flex justify-content-between">
+                                    <div class="heading-title">
+                                        <h4>
+                                            <div class="timer timer_3">
+                                                <ul>
+                                                    <li class="days"><span>d</span></li>
+                                                    <li class="hours"><span>h</span></li>
+                                                    <li class="minutes"><span>m</span></li>
+                                                    <li class="seconds"><span>s</span></li>
+                                                </ul>
+                                            </div>
+                                        </h4>
+                                    </div>
+                                    <div class="project-icon">
+                                        <img src="/images/tokenlogomni.png" width="50" alt="Project-Image" />
+                                    </div>
+                                </div>
+                                <div class="project-media">
+                                    <ul class="project-listing">
+                                        <li>Mining <span>{{HashRate}} Hash/Second</span></li>
+                                        <li>Volume of mining <span>{{VolumeOfMining}} MNO/Hour</span></li>
+                                        <li>Time to use <span>{{TimeToUse}} Hours</span></li>
+                                        <li>Max mining<span>{{MaxOut}} MNO</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="border-shadow shadow-1"></span>
+                            <span class="border-shadow shadow-2"></span>
+                            <span class="border-shadow shadow-3"></span>
+                            <span class="border-shadow shadow-4"></span>
+                        </div>
+                        <div class="icon-listing">
+                            <ul class="social-icon-list">
+                                <li>
+                                    <button class="readon hover-shape btn-buy-nft text-white">
+                                        <span class="btn-text">Buy</span>
+                                        <span class="hover-shape1"></span>
+                                        <span class="hover-shape2"></span>
+                                        <span class="hover-shape3"></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="readon black-shape btn-sell-nft">
+                                        <span class="btn-text">Sell</span>
+                                        <span class="hover-shape1"></span>
+                                        <span class="hover-shape2"></span>
+                                        <span class="hover-shape3"></span>
+                                    </button>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="border-shadow shadow-1"></span>
+                    <span class="border-shadow shadow-2"></span>
+                    <span class="border-shadow shadow-3"></span>
+                    <span class="border-shadow shadow-4"></span>
+                </div>
+            </script>
+            <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row align-items-center" id="machine-content">
+                </div>
+            </div>
+            <script id="machine-template" type="x-tmpl-mustache">
+                 <div class="col-lg-4 col-md-6">
+                    <div class="project-shape-item hover-shape-border">
+                        <div class="project-item ">
+                            <div class="project-info">
+                                <a href="javascript:void(0)">
+                                    <img src="{{ImageUrl}}" alt="Explore-Image" />
+                                </a>
+                                <div class="project-auother">
+                                    <h4 class="mb-10"><a href="#" class="text-warning">{{Name}}</a></h4>
+                                    <div class="dsc text-white">{{Code}} / {{Price}} MNI</div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header d-flex justify-content-between">
+                                    <div class="heading-title">
+                                        <h4>
+                                            <div class="timer timer_3">
+                                                <ul>
+                                                    <li class="days"><span>d</span></li>
+                                                    <li class="hours"><span>h</span></li>
+                                                    <li class="minutes"><span>m</span></li>
+                                                    <li class="seconds"><span>s</span></li>
+                                                </ul>
+                                            </div>
+                                        </h4>
+                                    </div>
+                                    <div class="project-icon">
+                                        <img src="/images/tokenlogomni.png" width="50" alt="Project-Image" />
+                                    </div>
+                                </div>
+                                <div class="project-media">
+                                    <ul class="project-listing">
+                                        <li>Increase <span>{{HashRate}} % Hash/Second</span></li>
+                                        <li>Time to use <span>{{TimeToUse}} Hours</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="border-shadow shadow-1"></span>
+                            <span class="border-shadow shadow-2"></span>
+                            <span class="border-shadow shadow-3"></span>
+                            <span class="border-shadow shadow-4"></span>
+                        </div>
+                        <div class="icon-listing">
+                            <ul class="social-icon-list">
+                                <li>
+                                    <button class="readon hover-shape btn-buy-nft text-dark">
+                                        <span class="btn-text">Buy</span>
+                                        <span class="hover-shape1"></span>
+                                        <span class="hover-shape2"></span>
+                                        <span class="hover-shape3"></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="readon black-shape btn-sell-nft">
+                                        <span class="btn-text">Sell</span>
+                                        <span class="hover-shape1"></span>
+                                        <span class="hover-shape2"></span>
+                                        <span class="hover-shape3"></span>
+                                    </button>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="border-shadow shadow-1"></span>
+                    <span class="border-shadow shadow-2"></span>
+                    <span class="border-shadow shadow-3"></span>
+                    <span class="border-shadow shadow-4"></span>
+                </div>
+            </script>
+            <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row align-items-center" id="shop-content">
+                </div>
+            </div>
+
+            <script id="shop-template" type="x-tmpl-mustache">
+                 <div class="col-lg-4 col-md-6">
+                    <div class="project-shape-item hover-shape-border">
+                        <div class="project-item ">
+                            <div class="project-info">
+                                <a href="javascript:void(0)">
+                                    <img src="{{ImageUrl}}" alt="Explore-Image" />
+                                </a>
+                                <div class="project-auother">
+                                    <h4 class="mb-10"><a href="#" class="text-warning">{{Name}}</a></h4>
+                                    <div class="dsc text-white">{{Code}} / {{Price}} MNI</div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header d-flex justify-content-between">
+                                    <div class="heading-title">
+                                        <h4>
+                                            <div class="timer timer_3">
+                                                <ul>
+                                                    <li class="days"><span>d</span></li>
+                                                    <li class="hours"><span>h</span></li>
+                                                    <li class="minutes"><span>m</span></li>
+                                                    <li class="seconds"><span>s</span></li>
+                                                </ul>
+                                            </div>
+                                        </h4>
+                                    </div>
+                                    <div class="project-icon">
+                                        <img src="/images/tokenlogomni.png" width="50" alt="Project-Image" />
+                                    </div>
+                                </div>
+                                <div class="project-media">
+                                    <ul class="project-listing">
+                                        <li>Increase <span>{{HashRate}} % Hash/Second</span></li>
+                                        <li>Time to use <span>{{TimeToUse}} Hours</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="border-shadow shadow-1"></span>
+                            <span class="border-shadow shadow-2"></span>
+                            <span class="border-shadow shadow-3"></span>
+                            <span class="border-shadow shadow-4"></span>
+                        </div>
+                        <div class="icon-listing">
+                            <ul class="social-icon-list">
+                                <li>
+                                    <button class="readon hover-shape btn-buy-nft text-dark">
+                                        <span class="btn-text">Buy</span>
+                                        <span class="hover-shape1"></span>
+                                        <span class="hover-shape2"></span>
+                                        <span class="hover-shape3"></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="readon black-shape btn-sell-nft">
+                                        <span class="btn-text">Sell</span>
+                                        <span class="hover-shape1"></span>
+                                        <span class="hover-shape2"></span>
+                                        <span class="hover-shape3"></span>
+                                    </button>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="border-shadow shadow-1"></span>
+                    <span class="border-shadow shadow-2"></span>
+                    <span class="border-shadow shadow-3"></span>
+                    <span class="border-shadow shadow-4"></span>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model LoginWith2faViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@section Styles{
+
+	<style>
+		.validation-summary-errors{
+		color:red
+	}
+	</style>
+
+	
+}
+<!-- SignUp-SignIn_Sectioon -->
+		<div class="SignUp_SignIn_Form_Sect">
+            <div class="SignUp_SignIn_Form_SectBG"></div>
+		    <div class="container">
+		        <div class="SignUp_SignIn_Form_Content">
+		            <div class="SignUp_SignIn_Form signInForm">
+		                <h2>Verification 2FA authentication</h2>
+		                <h3>Your login is protected with an authenticator app. Enter your authenticator code below.</h3>
+		                <form method="post" id="form-2fa" action="/LoginWith2fa">
+							@Html.AntiForgeryToken()
+							@Html.ValidationSummary()
+							@Html.HiddenFor(x=>x.ReturnUrl)
+		                    <div class="EmailFild">
+		                        <lable>Authenticator code</lable>
+		                        <input type="text" asp-for="TwoFactorCode" autocomplete="off" placeholder="Enter your authentication code">
+								<span asp-validation-for="TwoFactorCode" class="text-danger"></span>
+		                    </div>
+		                    
+							
+							
+
+		                    <div class="forgetPassBtnSect">
+		                        <div class="KYC_TramsAndCondetionSect m-0">
+		                            <a href="/login">Sign in here</a>
+		                        </div>
+		                        <div class="ForgetPass">
+		                            <a href="/forgotpassword">Forget Password ?</a>
+		                        </div>
+		                    </div>
+
+		                    <a href="javascript:void(0)"  onclick="document.getElementById('form-2fa').submit();">
+		                        <div class="project-btn-area text-center black-shape-bigCustom">
+		                            <button type="button">Submit</button>
+		                            <span class="hover-shape1"></span>
+		                            <span class="hover-shape2"></span>
+		                            <span class="hover-shape3"></span>
+		                        </div>
+		                    </a>
+		                </form>
+		                <h4>Don’t have an account ? <a href="/register">Sign up now !</a></h4>
+		            </div>
+		            <div class="singUpformShadow"></div>
+		        </div>
+		    </div>
+		</div>		
+		<!-- SignUp-SignIn_Sectioon END -->

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Add Google Store";
+}
+@section Styles{
+    @*<link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />*@
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/admin-app/controllers/blog/index.css" rel="stylesheet" asp-append-version="true" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+   
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="container" id="kt_content_container">
+        <div class="card mb-5 mb-xl-10">
+            <div class="card-body py-3">
+                <form class="form" action="/admin/google/AddEntity" enctype="multipart/form-data" method="post">
+                    <h3>@ViewBag.Msg</h3>
+                    <input type="hidden" id="hidId" value="0" />
+
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                            <span class="required">File Import</span>
+                        </label>
+                        <input type="file" class="form-control form-control-solid" name="file" />
+                    </div>
+
+                    
+                    <div class="text-center">
+                        <a href="/admin/google/index" class="btn btn-light me-3">Cancel</a>
+                        <button type="submit" id="btnSave" class="btn btn-primary">
+                            <span class="indicator-label">Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

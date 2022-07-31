@@ -1,0 +1,17 @@
+﻿.previous-gaming.list1Custom {
+    display: flex;
+}
+
+.previous-image img {
+    margin-right: 7px;
+    height: 40px;
+    max-width: none;
+    width: 40px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.MySavingTable .leaderboard-table-list tr td:nth-child(1) {
+    width: 190px;
+}

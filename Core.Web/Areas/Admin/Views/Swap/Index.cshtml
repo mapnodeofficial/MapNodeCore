@@ -1,0 +1,28 @@
+﻿@model WalletViewModel
+@using Core.Utilities.Constants
+@{
+    ViewBag.Title = "Swap";
+
+}
+@section Scripts{
+    <script src="~/admin-app/shared/dapp-helper.js" asp-append-version="true"></script>
+    <script>
+        var dapp = new DAppHelper.DApp();
+        dapp.init();
+    </script>
+}
+
+@section Styles{
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="container" id="kt_content_container">
+        <div class="card mb-5 mb-xl-10">
+            <div class="card-body">
+                <div class="row gx-9 gy-6">
+                    <h1 class="text-dark mb-3">Coming Soon</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

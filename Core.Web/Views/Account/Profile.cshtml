@@ -1,0 +1,172 @@
+﻿@model AppUserViewModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+@section Scripts{
+    <script src="~/client-app/controllers/account/my-profile.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-qrcode-master/src/jquery.qrcode.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-qrcode-master/src/qrcode.js" asp-append-version="true"></script>
+    <script>
+        var myProfileObj = new MyProfileController();
+        myProfileObj.initialize();
+    </script>
+}
+
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="/">Home</a>
+                        <span class="sub-title">Account</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Profile</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="@Model.Email" id="email" />
+
+
+<div class="gamfi-explore-content gamfi-previous-section pt-70 md-pt-80 pb-200 md-pb-200">
+    <div class="container">
+        <!-- Tab Menu Section Start -->
+        <div class="project-menu-area d-flex align-items-center justify-content-between">
+            <div class="project-left-menu">
+                <ul class="nav" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link active" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#open-igo" type="button" role="tab"
+                                aria-controls="open-igo" aria-selected="true">
+                            Profile
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#upcoming" type="button" role="tab"
+                                aria-controls="upcoming" aria-selected="false">
+                            Change password
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link" id="fa-tab" data-bs-toggle="tab"
+                                data-bs-target="#fa" type="button" role="tab"
+                                aria-controls="2fa" aria-selected="false">
+                            2FA Management
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="open-igo" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="PoolAndTokenInfo_card">
+                            <h2>Profile Info <span><img src="~/client-side/earntoken/assets/images/icons/steps.png" alt="" class="img-fluid" /></span></h2>
+                            <div class="PoolAndTokenInfo_List">
+                                <ul>
+                                    <li>
+                                        <p class="PoolAndTokenInfo_List_left">Email</p>
+                                        <p class="PoolAndTokenInfo_ListRight">@Model.Email</p>
+                                    </li>
+                                    <li>
+                                        <p class="PoolAndTokenInfo_List_left">Sponsor ID</p>
+                                        <p class="PoolAndTokenInfo_ListRight">@($"{CommonConstants.TOKEN_CODE}{Model.Sponsor}" )</p>
+                                    </li>
+                                    <li>
+                                        <p class="PoolAndTokenInfo_List_left">Created Date</p>
+                                        <p class="PoolAndTokenInfo_ListRight">@Model.DateCreated.ToShortDateString()</p>
+                                    </li>
+                                    <li>
+                                        <p class="PoolAndTokenInfo_List_left">Two Factor Authentication</p>
+                                        <p class="PoolAndTokenInfo_ListRight">@(Model.Enabled2FA ? "Enabled":"Disabled")</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="gamfi-form-content pt-10 md-pt-45 pb-120 md-pb-80">
+                    <div class="container">
+                        <div class="address-form">
+                            <form>
+                                <div class="input-button">
+                                    <input type="password" id="txtOld" placeholder="Enter old password">
+                                    <label for="txtOld">Current Password</label>
+                                </div>
+
+                                <div class="input-button">
+                                    <input type="password" id="txtNew" placeholder="Enter new password">
+                                    <label for="txtNew">New Password</label>
+                                </div>
+
+                                <div class="input-button">
+                                    <input type="password" id="txtConfirm" placeholder="Confirm new password">
+                                    <label for="txtConfirm">Confirm New password</label>
+                                </div>
+
+                                <div class="project-btn-area text-center black-shape-big mt-40">
+                                    <input type="button" id="btnChangePassword" name="submit" value="Submit">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="fa" role="tabpanel" aria-labelledby="fa-tab">
+                <div class="gamfi-form-content pt-20 md-pt-45 pb-120 md-pb-80">
+                    <div class="container">
+                        <div class="address-form">
+
+                            @if (!Model.Enabled2FA)
+                            {
+                                <h5 style="color:#ffa800">Please use your authentication app (such as Duo or Google Authenticator) to scan this QR code.</h5>
+                                <form>
+                                    <div style="text-align: center; width: 100%; background: white; padding: 20px 0px;" class="qr-code" id="qrcodeAuthenticatorCode"></div>
+
+                                    <div class="input-button">
+                                        <input type="text" id="txtAuthenticatorCode" placeholder="" value="@Model.AuthenticatorCode">
+                                    </div>
+
+                                    <div class="input-button">
+                                        <input type="text" id="verifyCode" placeholder="Authentication Code">
+                                        <label for="verifyCode">Authentication Code</label>
+                                    </div>
+
+                                    <div class="project-btn-area text-center black-shape-big mt-40">
+                                        <input type="button" id="btnVerifyCode" name="submit" value="Verify Code">
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <h5 style="color: #ffe501">2FA is enabled , input your current password to disabled 2FA</h5>
+
+                                <div class="input-button">
+                                    <input type="password" id="confirmedPassword2FA" placeholder="Enter current password">
+                                    <label for="confirmedPassword2FA">Current Password</label>
+                                </div>
+
+                                <div class="project-btn-area text-center black-shape-big mt-40">
+                                    <input type="button" id="btnDisabled2FA" name="submit" value="Disabled 2FA">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+﻿@using Core.Data.Enums
+@using Core.Utilities.Extensions
+@section Styles{
+
+}
+
+@section Scripts{
+    <script src="~/client-app/controllers/transfer/index.js"></script>
+
+    <script>
+        var transferObj = new TransferController();
+        transferObj.initialize();
+    </script>
+}
+
+<input hidden id="Enabled2FA" value="@((bool)ViewBag.Enabled2FA)" />
+<input hidden id="be-hidden-2faCode" />
+<input hidden id="be-hidden-password" />
+
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="/">Home</a>
+                        <span class="sub-title">Account</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Transfer</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="project-details-conent gamfi-form-content">
+    <div class="container">
+        <div class="row pt-70">
+            <div class="col-lg-12 pr-25 md-pr-15">
+                <div class="SignUp_SignIn_Form_Content">
+                    <div class="SignUp_SignIn_Form signInForm">
+                        <h2>Transfer <span class="lblTokenCode">USDT</span></h2>
+                        <h3>Minimum transfer <span class="lblMinTransfer">50</span> <span class="lblTokenCode">USDT</span></h3>
+                        <form>
+                            @Html.AntiForgeryToken()
+                            
+                            <div>
+                                <lable>Wallet <span class="lblTokenCode">USDT</span></lable>
+                                <select id="ddlWallet">
+                                    <option value="@WalletTransactionUnit.USDT">@WalletTransactionUnit.USDT.GetDescription()</option>
+                                    <option value="@WalletTransactionUnit.BNB">@WalletTransactionUnit.BNB.GetDescription()</option>
+                                    <option value="@WalletTransactionUnit.MNI">@WalletTransactionUnit.MNI.GetDescription()</option>
+                                    <option value="@WalletTransactionUnit.MNO">@WalletTransactionUnit.MNO.GetDescription()</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <lable><span class="lblTokenCode">USDT</span> Balance</lable>
+                                <input type="text" id="txtBalance" required autocomplete="off" readonly>
+                            </div>
+
+                            <div>
+                                <lable>Transfer Amount</lable>
+                                <input type="text" id="txtAmount" class="numberFormat" required autocomplete="off">
+                                <span class="lblErrorInsufficient text-danger"></span>
+                            </div>
+
+                            <div>
+                                <lable>Sponsor</lable>
+                                <input type="text" id="txtSponsor" required autocomplete="off">
+                                <div class="lblDisplayEmail" style="font-size: 14px; font-weight: 400;"></div>
+                            </div>
+
+                            <div>
+                                <lable>Fee Amount</lable>
+                                <input type="text" id="txtFeeAmount" value="0.00" readonly>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <lable>Receive Amount</lable>
+                                <input type="text" id="txtAmountReceive" value="0.00" readonly>
+                            </div>
+
+                            <div>
+                                <button type="button" id="btnConfirmTransfer">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

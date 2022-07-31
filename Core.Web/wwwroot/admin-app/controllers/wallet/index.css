@@ -1,0 +1,13 @@
+﻿.select2-container {
+    width: 100% !important;
+}
+
+.SignUp_SignIn_Form {
+    background: none !important;
+    max-width: 690px;
+    width: 100%;
+    margin: auto;
+    padding: 0 !important;
+    position: relative;
+    z-index: 2;
+}

@@ -1,0 +1,158 @@
+﻿@model TokenConfigViewModel
+
+@section Styles{
+    <link href="~/client-app/controllers/saving/detail.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/client-app/controllers/saving/detail.js"></script>
+    <script>
+        var savingDetailObj = new SavingDetailController();
+        savingDetailObj.initialize(
+            parseFloat('@(ViewBag.CurrentBalance)'),
+            parseInt('@(Model.Id)'),
+            parseInt('@(ViewBag.DefaultTimeLine)'),
+            parseFloat('@(ViewBag.DefaultInterest)'.replace(',', '.')));
+    </script>
+}
+
+<input type="hidden" id="isSavingDetail" />
+<input type="hidden" id="tokenCode" value="@Model.TokenCode" />
+<input type="hidden" id="tokenContract" value="@Model.ContractAddress" />
+<input type="hidden" id="tokenPrice" value="@((decimal)ViewBag.TokenPrice)" />
+<input type="hidden" id="hideMaxSaving" value="@Model.MaxSaving" />
+<input type="hidden" id="hideMinSaving" value="@Model.MinSaving" />
+<input type="hidden" id="hideTotalSupply" value="@Model.TotalSupply" />
+<input type="hidden" id="hideMaxInterestRate" value="@Model.MaxInterestRate" />
+
+<!-- Breadcrumbs Section Start -->
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="#">Earn</a>
+                        <span class="sub-title">Saving</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">@Model.Name</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 breadcrumbs-form md-mt-30">
+                <div class="btn-area">
+                    <a class="readon black-shape mr-5" href="@Url.Action("History","Saving")">
+                        <span class="btn-text">History</span>
+                    </a>
+                    <a class="readon black-shape" href="#">
+                        <span class="btn-text">Leaderboard</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="participat-information project-details-conent gamfi-about-secion pb-80 md-pb-50">
+    <div class="container">
+        <div class="row pt-70">
+            <div class="col-lg-6 pr-25 md-pr-15">
+                @Html.AntiForgeryToken()
+                <div class="project-item">
+                    <div class="project-info border-bottom-2">
+                        <h4 class="mb-15">
+                            <img src="@Model.TokenImageUrl" style="width: 40px; background: white; border-radius: 50%; padding: 5px;" />
+                            @Model.Name @Model.TokenCode
+                        </h4>
+                        <h4 class="mb-15"><span class="lblTotalSupply">0.00</span> <span class="buse">@Model.TokenCode</span></h4>
+                        <span>Target Raise</span>
+                    </div>
+                    <ul class="date-listing mb-35">
+
+
+                        <li class="StakeTablinks StakeTablinks@(Model.Id)" data-id="@Model.Id" data-rate="@(Model.Interest180Day)" data-Period="180">
+                            <button class="btn-Period" data-id="@Model.Id">180</button>
+                        </li>
+                        <li class="StakeTablinks StakeTablinks@(Model.Id)" data-id="@Model.Id" data-rate="@(Model.Interest270Day)" data-Period="270">
+                            <button class="btn-Period" data-id="@Model.Id">270</button>
+                        </li>
+                        <li class="StakeTablinks StakeTablinks@(Model.Id)" data-id="@Model.Id" data-rate="@(Model.Interest360Day)" data-Period="360">
+                            <button class="btn-Period" data-id="@Model.Id">360</button>
+                        </li>
+                        <li class="StakeTablinks StakeTablinks@(Model.Id) active" data-id="@Model.Id" data-rate="@(Model.Interest720Day)" data-Period="720">
+                            <button class="btn-Period" data-id="@Model.Id">720</button>
+                        </li>
+                    </ul>
+                    <div class="project-content">
+                        <div id="sevenDays" class="StakeTabcontent">
+                            <div class="project-media mb-40">
+                                <ul class="project-listing">
+                                    <li>Lock period: <strong class="lockPeriod">@(ViewBag.DefaultTimeLine) days</strong> <span>Interest Rate</span></li>
+                                    <li>Min lock: <strong class="lblMinSaving">0.00</strong> <a href="#"><span class="big-text lblInterestRate InterestRate@(Model.Id)">0.00%</span></a></li>
+                                    <li>Max lock: <strong class="lblMaxSaving">0.00</strong> <span>*Interest Rate is dynamic</span></li>
+                                    <li>Liquidity: <strong>Daily</strong></li>
+                                    <li>Status: <strong>@Model.TypeName</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-form-list">
+                        <h5 class="mb-18">Balance: <span id="CurrentBalance">0</span> @Model.TokenCode</h5>
+                        <div class="balance-form-area mb-27">
+                            <input type="text" class="numberFormat4" value="0.00" id="txtAmount">
+                            <button class="max btnMax">MAX</button>
+                            <div class="white-shape-small approve" id="btnConfirm">
+                                <input type="button" value="Confirm">
+                                <span class="hover-shape1"></span>
+                                <span class="hover-shape2"></span>
+                                <span class="hover-shape3"></span>
+                            </div>
+                        </div>
+                        <h5 class="mb-18 lblSubTotal">= $0.00</h5>
+                    </div>
+                    <div class="project-content">
+                        <div id="sevenDays" class="StakeTabcontent">
+                            <div class="project-media mb-40">
+                                <ul class="project-listing">
+                                    <li>Value date <span>@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd hh:mm")</span></li>
+                                    <li>Redemption date <span id="lblEndDate">@DateTime.Now.AddDays((int)ViewBag.DefaultTimeLine).ToString("yyyy-MM-dd hh:mm")</span></li>
+                                    <li>Expected interest <span id="lblRateExpected">$0.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 pl-25 md-pl-15">
+                <div class="project-item project-value-inner d-flex justify-content-between align-items-center mb-30">
+                    <div class="project-value">
+                        <h3 class="mb-15">868,163.54 @Model.TokenCode</h3>
+                        <span>Total Value Locked</span>
+                    </div>
+                    <div class="project-value-image">
+                        <img class="heading-right-image" src="~/client-side/earntoken/assets/images/project/rank.png" alt="rank" />
+                    </div>
+                </div>
+                <div class="project-item project-value-inner d-flex justify-content-between align-items-center mb-30">
+                    <div class="project-value">
+                        <h3 class="mb-15">@Model.PerTotalSaving%</h3>
+                        <span>Percent Value Locked</span>
+                    </div>
+                    <div class="project-value-image">
+                        <img class="heading-right-image" src="~/client-side/earntoken/assets/images/project/rank2.png" alt="rank" />
+                    </div>
+                </div>
+                <div class="project-item project-value-inner d-flex justify-content-between align-items-center">
+                    <div class="project-value">
+                        <h3 class="mb-15">5699</h3>
+                        <span>Number of Savers</span>
+                    </div>
+                    <div class="project-value-image">
+                        <img class="heading-right-image" src="~/client-side/earntoken/assets/images/project/rank3.png" alt="rank" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

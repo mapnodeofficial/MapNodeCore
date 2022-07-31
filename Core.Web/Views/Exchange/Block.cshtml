@@ -1,0 +1,79 @@
+﻿@section Styles{
+    <link href="~/client-app/controllers/exchange/block.css" rel="stylesheet" />
+}
+
+@section Scripts{
+
+    <script src="~/client-app/controllers/exchange/block.js"></script>
+    <script>
+        var blockController = new BlockController();
+        blockController.initialize();
+    </script>
+}
+
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="@Url.Action("Index","Exchange")">Sale</a>
+                        <span class="sub-title">Block</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Block</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 breadcrumbs-form md-mt-30">
+                <div class="btn-area">
+                    <a class="readon black-shape mr-5" href="@Url.Action("Index","Exchange")">
+                        <span class="btn-text">Sale</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                    <a class="readon black-shape" href="@Url.Action("LeaderBoard","Exchange")">
+                        <span class="btn-text">Leaderboard</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gamfi-previous-section TokenomicsTable_Sect md-pb-50 mt-5 pt-5">
+    <div class="container">
+        <div class="TokenomicsTable">
+            <div class="leaderboard-table-list pb-140 md-pb-80">
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table table-row-dashed table-row-gray-300 align-middle mb-55">
+                            <tr>
+                                <th class="text-warning">Amount</th>
+                                <th class="text-warning">Round Type</th>
+                                <th class="text-warning">Unlock Date</th>
+                                <th class="text-warning">Type</th>
+                                <th class="text-warning">Create Date</th>
+                            </tr>
+                            <tbody id="tbl-content"></tbody>
+                        </table>
+                    </div>
+                    @await Component.InvokeAsync("AjaxPaging")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        <td>{{Amount}} MNI</td>
+        <td>{{RoundTypeName}}</td>
+        <td>{{UnlockDate}}</td>
+        <td class="text-warning">{{TypeName}}</td>
+        <td>{{DateCreated}}</td>
+    </tr>
+</script>

@@ -1,0 +1,270 @@
+﻿
+@section Styles{
+    <link href="~/client-app/controllers/drink/index.css" rel="stylesheet" />
+}
+
+@section Scripts{
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+    @* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBilUdyX2_gngqdsbwstA1rsEM5bG-mWjA"></script>*@
+    <script src="~/client-app/controllers/drink/map.js"></script>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia2Fpb2tlbnMiLCJhIjoiY2w0ZTlsenA2MDA4dzNxcGFhZW82dzlucCJ9.rppB9BgPFVZ6QbmjjfaeZQ';
+        var mapObj = new MapController();
+
+
+        $(document).ready(function () {   //same as: $(function() {
+            mapObj.initialize();
+            mapObj.intervalHash = parseInt('@(ViewBag.IntervalHash)');
+        });
+
+        document.addEventListener('visibilitychange', function() {
+            location.reload();
+
+        });
+    </script>
+}
+
+
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="#">MN To Earn</a>
+                        <span class="sub-title">Start Drink</span>
+                        <img class="heading-left-image" src="/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image">
+                    </div><h2 class="title mb-0">Start Drink</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 breadcrumbs-form md-mt-30">
+                <div class="btn-area">
+                    @*<a class="readon black-shape mr-5" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#changeDrinkWallet">
+                        <span class="btn-text">Change Wallet</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>*@
+                    @* <a class="readon black-shape" href="#">
+                            <span class="btn-text">Leaderboard</span>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gamfi-explore-content gamfi-previous-section pt-70 md-pt-80 pb-100 md-pb-100">
+    <div class="container">
+        <div class="project-menu-area d-flex align-items-center justify-content-between">
+            <div class="project-left-menu">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link active" data-bs-toggle="tab"
+                                data-bs-target="#open-map" type="button" role="tab"
+                                aria-controls="open-map" aria-selected="true">
+                            Store Near
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link" data-bs-toggle="tab"
+                                data-bs-target="#open-store" type="button" role="tab"
+                                aria-controls="open-store" aria-selected="false">
+                            Store List
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="open-map" role="tabpanel">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 col-md-12">
+                        <div id="map" style="width:100%;height:400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="open-store" role="tabpanel">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="TokenomicsTable">
+                            <div class="leaderboard-table-list md-pb-80">
+                                <div class="">
+                                    <div class="table-responsive">
+                                        <table class="table table-row-dashed table-row-gray-300 align-middle">
+                                            <tr class="text-glow">
+                                                <th class="text-warning">Avatar</th>
+                                                <th class="text-warning">Name</th>
+                                                <th class="text-warning">Website</th>
+                                                <th class="text-warning">Phone Number</th>
+                                                <th class="text-warning">Increase</th>
+                                                <th class="text-warning">Distance</th>
+                                                <th class="text-warning">Address</th>
+                                            </tr>
+                                            <tbody id="tbl-content"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gamfi-explore-content gamfi-previous-section pb-200 md-pb-200">
+    <div class="container">
+        <div class="project-menu-area d-flex align-items-center justify-content-between">
+            <div class="project-left-menu">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link active" data-bs-toggle="tab"
+                                data-bs-target="#open-cup" type="button" role="tab"
+                                aria-controls="open-cup" aria-selected="true">
+                            Cup List
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link" data-bs-toggle="tab" id="btn_history"
+                                data-bs-target="#open-history" type="button" role="tab"
+                                aria-controls="open-history" aria-selected="false">
+                            History
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="open-cup" role="tabpanel">
+                <div class="row align-items-center" id="cup-content">
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="open-history"  role="tabpanel">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="TokenomicsTable">
+                            <div class="leaderboard-table-list md-pb-80">
+                                <div class="">
+                                    <div class="table-responsive">
+                                        <table class="table table-row-dashed table-row-gray-300 align-middle">
+                                            <tr class="text-glow">
+                                                <th class="text-warning">Store Name</th>
+                                                <th class="text-warning">Cup</th>
+                                                <th class="text-warning">HashRate</th>
+                                                <th class="text-warning">Start On</th>
+                                                <th class="text-warning">Leave On</th>
+                                            </tr>
+                                            <tbody id="tbl-content-history"></tbody>
+                                        </table>
+                                    </div>
+                                    <br/>
+                                    @await Component.InvokeAsync("AjaxPaging")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script id="table-history-template" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        <td>{{StoreName}}</td>
+        <td>{{CupName}}</td>
+        <td>{{HashEarn}}</td>
+        <td>{{StartOn}}</td>
+        <td>{{LeaveOn}}</td>
+    </tr>
+</script>
+
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        <td>
+            <div class="previous-gaming list1Custom">
+                <div class="previous-image">
+                    <img src="{{ImgUrl}}" />
+                </div>
+            </div>
+        </td>
+        <td>{{StoreName}}</td>
+        <td>{{Website}}</td>
+        <td>{{PhoneNumber}}</td>
+        <td>{{Increase}} %</td>
+        <td>{{Distance}} Km</td>
+        <td>{{StoreAddress}}</td>
+    </tr>
+</script>
+
+<script id="cup-template" type="x-tmpl-mustache">
+     <div class="col-lg-4 col-md-6">
+        <div class="project-shape-item hover-shape-border">
+            <div class="project-item ">
+                <div class="project-info">
+                    <a href="javascript:void(0)">
+                        <img src="{{ImageUrl}}" alt="Explore-Image" />
+                    </a>
+                    <div class="project-auother">
+                        <h4 class="mb-10"><a href="#" class="text-warning">{{Name}}</a></h4>
+                        <div class="dsc text-white text-glitch">{{Code}} / {{Price}} MNI</div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header d-flex justify-content-between">
+                        <div class="heading-title">
+                        </div>
+                        <div class="project-icon">
+                            <img src="/images/tokenlogomni.png" width="50" alt="Project-Image" />
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <ul class="project-listing">
+                            <li>Mining <span>{{HashRateDisplay}} Hash/Second</span></li>
+                            <li>Volume of mining <span>0.10 MNO/Hour</span></li>
+                            <li>Time to use <span>{{TimeToUse}} Hours</span></li>
+                            <li>Max mining<span>{{MaxOut}} MNO</span></li>
+                            <li >Current Hash<span class="is-on-{{isDrink}} text-glow text-success"
+                                id="item-li-{{Id}}" current-hash="{{CurrentHashRate}}" hash-val="{{HashRate}}"
+                            style="font-size:20px;font-weight:bolder;">{{CurrentHashRateDisplay}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-listing">
+                <ul class="social-icon-list">
+                    <li>
+                        <button style="display:{{displayDrink}}" onclick="return mapObj.Drink({{Id}})" class="readon hover-shape btn-buy-nft text-dark">
+                            <span class="btn-text">Start</span>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button style="display:{{displayStop}}" onclick="return mapObj.StopDrink({{Id}})" class="readon black-shape btn-sell-nft">
+                            <span class="btn-text">Stop</span>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button onclick="return mapObj.SwapHashToMNO({{Id}})" class="readon hover-shape btn-sell-nft bg-warning">
+                            <span class="btn-text">Swap</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</script>
+

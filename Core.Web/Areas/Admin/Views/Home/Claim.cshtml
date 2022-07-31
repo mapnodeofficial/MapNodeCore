@@ -1,0 +1,172 @@
+﻿@section scripts{
+    <script src="~/admin-app/shared/dapp-helper.js" asp-append-version="true"></script>
+    <script src="~/admin-app/shared/dapp-transaction.js"></script>
+    <script>
+        var dapp = new DAppHelper.DApp();
+        dapp.init();
+
+        var module = new DAppTransactionController();
+        module.initialize();
+    </script>
+
+}
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Post-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <!--begin::Container-->
+        <div id="kt_content_container" class="container">
+            <!--begin::Row-->
+            <div class="row gy-5 g-xl-8">
+                <!--begin::Col-->
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-xl-12">
+                    <!--begin::Tables Widget 5-->
+                    <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <div class="align-items-start card-toolbar">
+                                <h1 class="text-dark fw-bolder fs-3 my-1">
+                                    Claim MAR
+                                </h1>
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body py-3">
+                            <div class="card-body d-flex flex-center flex-column p-9">
+                                <form class="form w-100 dapp_form d-none">
+                                    <!--<div class="row mb-6">-->
+                                    <!--begin::Label-->
+                                    <!--<label class="col-lg-4 col-form-label fw-bold fs-6">Your referral link</label>-->
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <!--<div class="col-lg-8 fv-row fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+        <input type="text" class="form-control form-control-lg form-control-solid dapp_referral-link" disabled>
+        <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>-->
+                                    <!--end::Col-->
+                                    <!--</div>-->
+                                    <!--<input type="hidden" class="form-control form-control-lg form-control-solid dapp_referral-address-hidden" value="@ViewData["referralLink"]" readonly>
+                                    <div class="row mb-6">-->
+                                        <!--begin::Label-->
+                                        <!--<label class="col-lg-4 col-form-label fw-bold fs-6">Invited By</label>-->
+                                        <!--end::Label-->
+                                        <!--begin::Col-->
+                                        <!--<div class="col-lg-8 fv-row fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                                            <input type="text" class="form-control form-control-lg form-control-solid dapp_referral-address" value="@ViewData["referralLink"]" readonly>
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>-->
+                                        <!--end::Col-->
+                                    <!--</div>-->
+                                    <div class="row mb-6">
+                                        <!--begin::Label-->
+                                        <label class="col-lg-4 col-form-label required fw-bold fs-6">MAR Receive</label>
+                                        <!--end::Label-->
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8 fv-row fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                                            <input type="text" class="form-control form-control-lg form-control-solid" value="50000" disabled>
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <div class="row mb-6">
+                                        <!--begin::Label-->
+                                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Your wallet</label>
+                                        <!--end::Label-->
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8 fv-row fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                                            <input type="text" class="form-control form-control-lg form-control-solid dapp_address" disabled>
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--begin::Follow-->
+                                </form>
+                                <button type="button" class="btn btn-sm btn-light-primary dapp_button" data-text="Claim MAR" data-action="claim">
+                                    <span class="dapp_button_connected d-none">Claim MAR</span>
+                                    <span class="dapp_button_disconnected">Connect Wallet to Claim</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Tables Widget 5-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <div class="row gy-5 g-xl-8">
+                <div class="col-xl-12">
+                    <!--begin::Tables Widget 5-->
+                    <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                        <div class="card-header border-0 pt-5">
+                            <div class="align-items-start card-toolbar">
+                                <h1 class="text-dark fw-bolder fs-3 my-1">
+                                    Claim History
+                                </h1>
+                                @* <input type="text" id="txt-search-keyword" class="form-control form-control-white form-control-sm w-150px ps-9" placeholder="Search">*@
+                            </div>
+                        </div>
+                        <div class="card-body border-0 pt-5">
+                            <div class="table-responsive">
+                                <div class="dapp_transactions" data-type="claim">
+                                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                        <thead>
+                                            <tr class="fw-bolder text-muted">
+                                                <th class="min-w-100px">
+                                                    Hardware Wallet
+                                                </th>
+                                                <th class="min-w-160px">Amount</th>
+                                                <th class="min-w-120px">
+                                                    Address From<br />
+                                                    Address To<br />
+                                                </th>
+                                                <th class="min-w-140px">BNB TransactionHash <br />MAR TransactionHash</th>
+                                                <th class="min-w-100px">
+                                                    Create Date
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbl-content"></tbody>
+                                    </table>
+                                </div>
+                                @*<div class="text-center dapp_no-transactions">Please, connect your wallet.</div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--end::Row-->
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+@Html.AntiForgeryToken()
+<!--end::Post-->
+<script id="table-template" type="x-tmpl-mustache">
+        <tr>
+            <td>
+                <span class="text-muted fw-bold text-muted d-block fs-7">{{WalletType}}</span>
+            </td>
+            <td>
+                <a href="#" class=" fw-bold text-muted text-hover-primary d-block fs-7">{{BNBAmount}} BNB</a>
+                <a href="#" class=" fw-bold text-muted text-hover-primary d-block fs-7">{{TokenAmount}} MAR</a>
+            </td>
+            <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-7">{{AddressFrom}}</a>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-7">{{AddressTo}}</a>
+            </td>
+
+            <td>
+                <a href="#" class="text-dark fw-bold text-hover-primary d-block fs-7">{{BNBTransactionHash}}</a>
+                <a href="#" class="text-dark fw-bold text-hover-primary d-block fs-7">{{TokenTransactionHash}}</a>
+            </td>
+            <td>
+                <span class="text-muted fw-bold text-muted d-block fs-7">{{DateCreated}}</span>
+            </td>
+
+        </tr>
+</script>

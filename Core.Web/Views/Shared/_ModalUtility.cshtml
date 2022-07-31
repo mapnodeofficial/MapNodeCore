@@ -1,0 +1,277 @@
+﻿<!-- Modal Deposit Section Start-->
+<div class="modal fade" id="modal_deposit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <h2>Deposit <span class="tokenCode"></span></h2>
+                        <h3>This address support <span class="tokenCode"></span> Bsc BEP20</h3>
+                        <div class="FullNameFild">
+                            <lable>Qr Code Address</lable>
+                            <div style="text-align: center; width: 100%; background: white; padding: 20px 0px;"
+                                 class="qr-code" id="qrcodePublishKey">
+                            </div>
+                        </div>
+                        <div class="PasswordFild mt-3">
+                            <lable>Wallet Address</lable>
+                            <input type="text" id="txtPublishKey" readonly>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <label>
+                                Minimum deposit <span class="minDeposit"></span> <span class="tokenCode"></span>
+                            </label>
+                        </div>
+                        <div class="mb-4">
+                            <button id="btnCopyPublishKey">Copy address</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Modal Deposit Section End-->
+<!-- Modal Deposit Section Start-->
+@*<div class="modal fade" id="modal_withdraw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="icon-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    @Html.AntiForgeryToken()
+                    <h2>Withdraw <span class="tokenCode"></span></h2>
+                    <h3>This address support <span class="tokenCode"></span> Bsc BEP20</h3>
+                    <div>
+                        <lable>Wallet <span class="tokenCode"></span></lable>
+                        <input type="text" class="balance" readonly>
+                    </div>
+                    <div>
+                        <lable>Amount</lable>
+                        <input type="text" id="txtAmount" value="0.00" class="numberFormat">
+                        <span class="lblErrorInsufficient  text-danger"></span>
+                    </div>
+                    <div>
+                        <lable>Fee</lable>
+                        <input type="text" id="txtFeeAmount" value="0.00" readonly>
+                    </div>
+                    <div>
+                        <lable>Amount Receive</lable>
+                        <input type="text" id="txtAmountReceive" value="0.00" readonly>
+                    </div>
+                    <div>
+                        <lable>Receive Address</lable>
+                        <input type="text" id="txtReceiveAddress" readonly>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <label>
+                            Minimum withdraw <span class="minWithdraw"></span> <span class="tokenCode"></span>
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <button id="btnConfirmWithdraw">Withdraw</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>*@
+<!-- Modal Deposit Section End-->
+<!-- Modal Section Start-->
+<div class="modal fade " id="WalletConnect" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modals-title  mb-0" id="exampleModalLabel">Connect Wallet</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="icon-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-20">Please select a wallet to connect to this marketplace</p>
+                <div class="connect-section">
+                    <ul class="heading-list">
+                        <li id="wallet-connect-metamask"><a href="#"><span><img src="~/client-side/earntoken/assets/images/icons/meta-mask.png" alt="Meta-mask-Image"></span>MetaMask</a></li>
+                        @*
+                            <li><a href="#"><span><img src="~/client-side/earntoken/assets/images/icons/coinbase.png" alt="Coinbase-Image"></span>Coinbase</a></li>*@
+                        <li id="wallet-connect-trust"><a href="#"><span><img src="~/client-side/earntoken/assets/images/icons/trust.png" alt="Trust-Image"></span>Trust Wallet</a></li>
+                        @*
+                            <li><a href="#" id="wallet-connect-walletconnect"><span><img src="~/client-side/earntoken/assets/images/icons/wallet.png" alt="Wallet-Image"></span>WalletConnect</a></li>*@
+                    </ul>
+                </div>
+                <p>
+                    By connecting your wallet, you agree to our <a href="#">
+                        <span class="modal-title">Terms of Service </span>
+                    </a>and our <a href="#"><span class="modal-title"> Privacy Policy</span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Section End-->
+<!-- Modal Share icons Start-->
+<div class="modal fade" id="walletInformation" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modals-title mb-0" id="exampleModalLabel">Provider Error</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="des-heading">
+                    <h4 class="mb-15">You have not installed DAPP, please install DAPP</h4>
+                    <a id="linkProvider" target="_blank" rel="noreferrer noopener" href="https://docs.pancakeswap.finance/get-started/connection-guide" color="primary" font-size="16px" class="sc-7fd741e1-0 sc-7320e58-0 fdSpLB kSSHkM">Install now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Share icons End-->
+<div class="modal fade" id="changeDrinkWallet" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modals-title mb-0" id="exampleModalLabel">Change Wallet</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="des-heading">
+                    <h5 class="mb-15">Are you sure to change drink wallet?</h5>
+
+                    <div class="btn-area">
+                        <a class="readon yellow-btn hover-shape btn bg-warning"
+                           href="@Url.Action(" ChangeWallet")">
+                            <span class="btn-text">Change Wallet</span>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </a>
+                    </div>
+
+                    @*<a id="linkProvider" rel="noreferrer noopener" href="@Url.Action(" ChangeWallet")"
+                        style="font-size:16px;color:yellow" class="sc-7fd741e1-0 sc-7320e58-0 fdSpLB kSSHkM">Change Now</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Get Code Start-->
+<div class="modal fade" id="drinkCodeInformation" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modals-title mb-0">Access Code</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <p class="mb-20">Please select a wallet to connect to this marketplace</p>
+                <div class="connect-section">
+                    <input type="text" class="numberFormat4" readonly="readonly" value="" id="txtAccessCode">
+                    <button id="btnCopyAccessCode" class="max btnMax">Copy</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Share icons End-->
+<!-- Modal Section Start-->
+@*<div class="modal fade " id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modals-title  mb-0" id="exampleModalLabel">Change password</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="EmailFild">
+                        <lable>Email Address</lable>
+                        <input type="email" placeholder="Enter your email address" readonly value="@Model.Email" id="txtEmail" name="email" autocomplete="off">
+                    </div>
+
+                    <div class="PasswordFild">
+                        <lable>Password</lable>
+                        <input type="password" placeholder="Enter your password" id="txtPassword" autocomplete="off">
+                    </div>
+                    <div class="PasswordFild">
+                        <lable>Confirm password</lable>
+                        <input type="password" placeholder="Enter your password" id="txtConfirmPassword" autocomplete="off">
+                    </div>
+
+
+
+                    <a href="javascript:void(0)" id="btnResetPassword">
+                        <div class="project-btn-area text-center black-shape-bigCustom">
+                            <button type="button">Submit</button>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+<!-- Modal Transfer Section Start-->
+<div class="modal fade" id="modal_transfer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="icon-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    @Html.AntiForgeryToken()
+                    <h2>Transfer <span class="tokenCode"></span></h2>
+                    <h3>This address support <span class="tokenCode"></span> BSC BEP20</h3>
+                    <div>
+                        <lable>Wallet <span class="tokenCode"></span></lable>
+                        <input type="text" class="balance" readonly>
+                    </div>
+                    <div>
+                        <lable>Amount</lable>
+                        <input type="text" id="txtTransferAmount" value="0.00" readonly class="numberFormat">
+                        <span class="lblErrorInsufficient  text-danger"></span>
+                    </div>
+                    <div>
+                        <lable>Fee</lable>
+                        <input type="text" id="txtTransferFeeAmount" value="0.00" readonly>
+                    </div>
+                    <div>
+                        <lable>Amount Receive</lable>
+                        <input type="text" id="txtTransferAmountReceive" value="0.00" readonly>
+                    </div>
+                    <div>
+                        <lable>Receive Address</lable>
+                        <input type="text" id="txtTransferReceiveAddress" readonly>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <label>
+                            Minimum transfer <span class="minTransfer"></span> <span class="tokenCode"></span>
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <button id="btnConfirmTransfer">Transfer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Deposit Section End-->

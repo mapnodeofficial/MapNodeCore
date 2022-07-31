@@ -1,0 +1,266 @@
+﻿body {
+    background-color: #ffffff;
+}
+#tab-4-5 .Character img, #tab-4-4 .Character img {
+    height: 190px;
+}
+#tab-4-6 .Character {
+    width:unset;
+}
+.Character {
+    width: calc(47px * 5);
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.Character_spritesheet {
+    animation: moveSpritesheet 1s steps(8) infinite;
+    width: calc(380px * 5);
+    position: absolute;
+    max-width:unset !important;
+}
+
+
+@keyframes moveSpritesheet {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.Character1 {
+    width: calc(47px * 4);
+    height: calc(832px * 4);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet1 {
+    animation: moveSpritesheet1 0.7s steps(6) infinite;
+    width: calc(280px * 4);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet1 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.Character3 {
+    width: calc(47px * 5);
+    height: calc(832px * 5);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet3 {
+    animation: moveSpritesheet3 0.7s steps(12) infinite;
+    width: calc(565px * 5);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet3 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.Character4 {
+    width: calc(47px * 4);
+    height: calc(832px * 4);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet4 {
+    animation: moveSpritesheet4 1s steps(18) infinite;
+    width: calc(856px * 4);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet4 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.Character5 {
+    width: calc(47px * 4);
+    height: calc(832px * 4);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet5 {
+    animation: moveSpritesheet5 1s steps(18) infinite;
+    width: calc(856px * 4);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet5 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.Character6 {
+    width: calc(47px * 5);
+    height: calc(832px * 5);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet6 {
+    animation: moveSpritesheet6 1s steps(16) infinite;
+    width: calc(750px * 5);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet6 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+.Character7 {
+    width: calc(47px * 5);
+    height: calc(832px * 5);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet7 {
+    animation: moveSpritesheet7 1s steps(12) infinite;
+    width: calc(565px * 5);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet7 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.Character8 {
+    width: calc(47px * 5);
+    height: calc(832px * 5);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet8 {
+    animation: moveSpritesheet8 1s steps(20) infinite;
+    width: calc(880px * 5);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet8 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.Character9 {
+    width: calc(47px * 5);
+    height: calc(832px * 5);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet9 {
+    animation: moveSpritesheet9 0.5s steps(4) infinite;
+    width: calc(188px * 5);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet9 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+.Character10 {
+    width: calc(47px * 5);
+    height: calc(832px * 5);
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.Character_spritesheet10 {
+    animation: moveSpritesheet10 1s steps(6) infinite;
+    width: calc(284px * 5);
+    position: absolute;
+    max-width: unset !important;
+}
+
+
+@keyframes moveSpritesheet10 {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+

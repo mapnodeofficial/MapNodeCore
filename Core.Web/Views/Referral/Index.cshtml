@@ -1,0 +1,197 @@
+﻿@section Scripts{
+
+}
+
+<!-- Breadcrumbs Section Start -->
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="#">Connect</a>
+                        <span class="sub-title">Referral</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Referral</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs  Section End -->
+<!-- FAQ Content Start -->
+<div class="FAQ_ScreenSect">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="FAQ_Screen_Tab_Sect">
+                    <div class="FAQ_Screen_Tab">
+                        <ul>
+                            <li class="FAQtablinks" onclick="openFAQtab(event, 'ReferralLink')" id="defaultOpen">
+                                Referral Link<span>
+                                    <img src="assets/images/icons/steps.png" alt="">
+                                </span>
+                            </li>
+                            <li class="FAQtablinks" onclick="openFAQtab(event, 'ReferralList')">
+                                Referral Listing
+                                <span>
+                                    <img src="assets/images/icons/steps.png" alt="">
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="FAQ_Screen_Tab_Content">
+                    <div id="ReferralLink" class="FAQtabcontent animate_opacity">
+                        <div class="row m-0">
+                            <div class="col-md-12 p-0">
+                                <div class="kycForm GetinTouchForm">
+                                    <h5>Get the link to share your network</h5>
+                                    <div class="InputNameSect">
+                                        <form>
+                                            <div class="FirstNameFild">
+                                                <input type="text"  id="txtReferralLink" value="@ViewBag.ReferralLink" readonly="readonly">
+                                                <a class="max btnCopyReferralLink text-glitch" id="btnCopyReferralLink">Copy</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="ReferralList" class="FAQtabcontent animate_opacity">
+                        <div class="FAQContnetSect">
+
+                            <div class="row m-0">
+                                <div id="jstree"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQ Content END -->
+<!-- FAQ JS -->
+<!-- Tab JS -->
+<script>
+    function openFAQtab(evt, cityName) {
+
+
+        if (cityName === 'ReferralList') {
+            $("div#jstree").jstree({
+                plugins: ["state", "types"],
+                core: {
+                    themes: { responsive: false },
+                    "check_callback": true,
+                    'data': {
+                        'url': function (node) {
+                            return '/Referral/GetMemberTreeNode';
+                            //return '/Referral/GetMemberTreeNode?address=' + DeFiHelper.CurrentAddress;
+                        },
+                        'data': function (node) {
+                            return {
+                                'parent': node.id
+                            };
+                        }
+                    }
+                },
+                types: {
+                    default: {
+                        "icon": "fa fa-users text-primary"
+                    },
+                    file: {
+                        "icon": "fa fa-user text-danger"
+                    }
+                },
+                state: { "key": "demo3" }
+            })
+        }
+
+        var i, FAQtabcontent, FAQtablinks;
+
+        FAQtabcontent = document.getElementsByClassName("FAQtabcontent");
+
+        for (i = 0; i < FAQtabcontent.length; i++) {
+            FAQtabcontent[i].style.display = "none";
+        }
+
+        FAQtablinks = document.getElementsByClassName("FAQtablinks");
+
+        for (i = 0; i < FAQtablinks.length; i++) {
+            FAQtablinks[i].className = FAQtablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(cityName).style.display = "block";
+
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+    document.getElementById("btnCopyReferralLink").addEventListener("click", function () {
+        copyToClipboard(document.getElementById("txtReferralLink"));
+    });
+
+    function copyToClipboard(elem) {
+        // create hidden text element, if it doesn't already exist
+        var targetId = "_hiddenCopyText_";
+        var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+        var origSelectionStart, origSelectionEnd;
+        if (isInput) {
+            // can just use the original source element for the selection and copy
+            target = elem;
+            origSelectionStart = elem.selectionStart;
+            origSelectionEnd = elem.selectionEnd;
+        } else {
+            // must use a temporary form element for the selection and copy
+            target = document.getElementById(targetId);
+            if (!target) {
+                var target = document.createElement("textarea");
+                target.style.position = "absolute";
+                target.style.left = "-9999px";
+                target.style.top = "0";
+                target.id = targetId;
+                document.body.appendChild(target);
+            }
+            target.textContent = elem.textContent;
+        }
+        // select the content
+        var currentFocus = document.activeElement;
+        target.focus();
+        target.setSelectionRange(0, target.value.length);
+
+        // copy the selection
+        var succeed;
+        try {
+            succeed = document.execCommand("copy");
+        } catch (e) {
+            succeed = false;
+        }
+        // restore original focus
+        if (currentFocus && typeof currentFocus.focus === "function") {
+            currentFocus.focus();
+        }
+
+        if (isInput) {
+            // restore prior selection
+            elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+        } else {
+            // clear temporary content
+            target.textContent = "";
+        }
+
+        be.notify('Copy to clipboard is successful', 'success');
+
+        return succeed;
+    }
+</script>

@@ -1,0 +1,96 @@
+﻿@section Styles{
+    <link href="~/client-app/controllers/saving/leader-board.css" rel="stylesheet" />
+}
+
+@section Scripts{
+
+    <script src="~/client-app/controllers/saving/leader-board.js"></script>
+    <script>
+        var leaderBoardController = new LeaderBoardController();
+        leaderBoardController.initialize();
+    </script>
+}
+
+<!-- Breadcrumbs Section Start -->
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="@Url.Action("Index","Saving")">Saving</a>
+                        <span class="sub-title">Leaderboard</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Leaderboard</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 breadcrumbs-form md-mt-30">
+                <div class="btn-area">
+                    <a class="readon black-shape mr-5" href="@Url.Action("Index","Saving")">
+                        <span class="btn-text">Saving</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                    <a class="readon black-shape" href="@Url.Action("History","Saving")">
+                        <span class="btn-text">History</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs  Section End -->
+<!-- Previous Section Start -->
+<div class="gamfi-previous-section TokenomicsTable_Sect md-pb-50 mt-5 pt-5">
+    <div class="container">
+        <div class="TokenomicsTable">
+            <div class="leaderboard-table-list pb-140 md-pb-80">
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table table-row-dashed table-row-gray-300 align-middle mb-55">
+                            <tr class="text-glow">
+                                <th>Coin</th>
+                                <th>Amount</th>
+                                <th>USD</th>
+                                <th>Timeline</th>
+                                <th>Interested Rate</th>
+                                <th>Saving Date</th>
+                                <th>End Date</th>
+                            </tr>
+                            <tbody id="tbl-content"></tbody>
+                        </table>
+                    </div>
+                    @await Component.InvokeAsync("AjaxPaging")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        <td>
+            <div class="previous-gaming list1Custom">
+                <div class="previous-image">
+                    <img src="{{TokenImage}}" />
+                </div>
+                <div class="previous-price">
+                    <div class="dsc">{{TokenName}}</div>
+                    <h6 class="mb-0">{{TokenCode}}</h5>
+                </div>
+            </div>
+        </td>
+
+        <td>{{SavingAmount}}</td>
+        <td>{{USDAmount}}</td>
+        <td>{{Timeline}} days</td>
+        <td>{{InterestedRate}}%</td>
+        <td>{{SavingDate}}</td>
+        <td>{{EndDate}}</td>
+    </tr>
+</script>

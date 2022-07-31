@@ -1,0 +1,105 @@
+﻿@section Styles{
+    <link href="~/client-app/controllers/wallet/index.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/lib/jquery-qrcode-master/src/jquery.qrcode.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-qrcode-master/src/qrcode.js" asp-append-version="true"></script>
+
+    <script src="~/client-app/controllers/wallet/index.js" asp-append-version="true"></script>
+    <script>
+        var walletObj = new WalletController();
+        walletObj.initialize('@ViewBag.PublishKey','@ViewBag.ReceiveAddress');
+    </script>
+}
+    @{
+    bool is2FA = (bool)ViewBag.Enabled2FA;
+}
+
+<input hidden id="Enabled2FA" value="@is2FA.ToString()" />
+<input hidden id="be-hidden-2faCode" />
+<input hidden id="be-hidden-password" />
+
+<!-- Breadcrumbs Section Start -->
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="/">Home</a>
+                        <span class="sub-title">Wallet</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Wallet</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 breadcrumbs-form md-mt-30">
+                <div class="btn-area">
+                    <a class="readon black-shape mr-5" href="@Url.Action("Index","RequestStatus")">
+                        <span class="btn-text">Request Status</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                    <a class="readon black-shape" href="@Url.Action("Index","Transaction")">
+                        <span class="btn-text">Transaction</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs  Section End -->
+<!-- Project Section Start -->
+<div class="gamfi-project-section gamfiProjectClasic_ProjectSect main-project-area mt-5 pt-5">
+    <div class="container">
+        <div class="row align-items-center" id="tbl-content">
+
+        </div>
+    </div>
+</div>
+<!-- Project Section End -->
+
+<script id="table-template" type="x-tmpl-mustache">
+    <div class="col-lg-3 col-md-6">
+        <div class="project-item hover-shape-border">
+            <div class="project-info d-flex">
+                <a href="https://bscscan.com/token/{{ContractAddress}}">
+                    <img src="{{TokenImageUrl}}" alt="{{Name}}" width="40" />
+                </a>
+                <div class="project-auother">
+                    <h5 class="mb-0 text-glitch">Wallet {{TokenCode}}</h4>
+                    <div class="dsc"><span class="numberFormat">{{Amount}}</span> {{TokenCode}}</div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-media">
+                    <ul class="project-listing pb-50">
+                        <div class="icon-listing ProjectClasicSocialIconList">
+                            <ul class="social-icon-list">
+                                <li>
+                                    <a href="#" id="btnDeposit" data-tokencode={{TokenCode}}
+                                        data-publishKey={{MinDeposit}} data-mindeposit={{MinDeposit}}
+                                        class="readon hover-shape btn-2">
+                                        <span class="btn-text">Deposit</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="btnWithdraw" data-tokencode={{TokenCode}}
+                                      data-tokenid={{TokenConfigId}} data-fee={{FeeWithdraw}} data-balance={{Amount}}
+                                        data-minwithdraw={{MinWithdraw}} class="readon hover-shape btn-3">
+                                        <span class="btn-text text-white">Withraw</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

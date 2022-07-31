@@ -1,0 +1,38 @@
+﻿
+.gamfi_Our_mentor_section {
+    padding-top: 115px;
+}
+
+.previous-image img {
+    height: 50px;
+    width: 70px;
+}
+
+#marker {
+    background-image: url('/images/map-marker-icon_final.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: black;
+}
+
+.mapboxgl-popup-content {
+    color: black;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+@media (max-width: 767px) {
+    .leaderboard-table-list tr th:last-child,
+    .leaderboard-table-list tr td:last-child {
+        min-width: 350px;
+    }
+
+    .TokenomicsTable table tr td {
+        padding: 15px 8px;
+    }
+}

@@ -1,0 +1,215 @@
+﻿@model HomeViewModel
+
+@section Styles{
+    <link href="~/client-app/controllers/saving/history.css" rel="stylesheet" />
+}
+
+@section Scripts{
+
+    <script src="~/client-app/controllers/saving/history.js"></script>
+    <script>
+        var savingHistoryObj = new SavingHistoryController();
+        savingHistoryObj.initialize();
+    </script>
+}
+
+<!-- Breadcrumbs Section Start -->
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="/">Earn</a>
+                        <span class="sub-title">Saving</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">History</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 breadcrumbs-form md-mt-30">
+                <div class="btn-area">
+                    <a class="readon black-shape mr-5" href="@Url.Action("Index","Saving")">
+                        <span class="btn-text">Saving</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                    <a class="readon black-shape" href="@Url.Action("Leaderboard","Saving")">
+                        <span class="btn-text">Leaderboard</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs  Section End -->
+
+<div class="gamfi-previous-section TokenomicsTable_Sect md-pb-50 mt-5 pt-5">
+    <div class="container">
+        <div class="sec-inner align-items-center d-flex justify-content-between mb-30">
+            <div class="sec-heading">
+                <h4 class="title text-warning text-glow">My Saving</h4>
+            </div>
+        </div>
+        <div class="MySavingTable">
+            <div class="leaderboard-table-list pb-140 md-pb-80">
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table table-row-dashed table-row-gray-300 align-middle">
+                            <tr>
+                                <th>Coin</th>
+                                <th>Amount</th>
+                                <th>Duration</th>
+                                <th>Interest Rate</th>
+                                <th>Amount Receive</th>
+                                <th>Expected Interest</th>
+                                <th>
+                                    Create Date
+                                    <br />
+                                    Value Date
+                                </th>
+                                <th>Redemption Date</th>
+                                <th>Status</th>
+                            </tr>
+                            <tbody id="tbl-content"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        <td>
+            <div class="previous-gaming list1Custom">
+                <div class="previous-image">
+                    <img src="{{TokenImage}}" />
+                </div>
+                <div class="previous-price">
+                    <div class="dsc">{{TokenName}}</div>
+                    <h6 class="mb-0">{{TokenCode}}</h5>
+                </div>
+            </div>
+        </td>
+        <td>{{SavingAmount}}</td>
+        <td>{{TimeLine}} days</td>
+        <td>{{InterestRate}}%</td>
+        <td>${{USDAmount}}</td>
+        <td>${{ExpectedInterest}}</td>
+        <td>{{SavingDate}}<br/>{{ValueDate}}</td>
+        <td>{{EndDate}}</td>
+        <td>{{Status}}</td>
+    </tr>
+</script>
+
+
+<div class="project-details-conent gamfi-about-secion pb-80 md-pb-20">
+    <div class="container">
+        <div class="row" data-spy="scroll" data-target="#interest-rate" data-offset="20">
+            <div class="col-md-3">
+                <div class="project-summary-menu project_summary_menu_BgGridient" id="myScrollspy">
+                    <div id="ProjectSammeryTabs" class="ProjectSammeryTabsSect">
+                        <button class="active ProjectSummeryTabBtn1" data-target="#project_summary">
+                            <a href="#interest-rate">
+                                Interest Rate
+                                <img src="~/client-side/earntoken/assets/images/project/menu-image.png" />
+                            </a>
+                        </button>
+                        <button class="ProjectSummeryTabBtn2" data-target="#Schedule">
+                            <a href="#Schedule">
+                                Commission
+                                <img src="~/client-side/earntoken/assets/images/project/menu-image.png" />
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 pl-35 sm-pl-15 sm-pt-40">
+                <div class="project_summarySectScrllab" style="padding-bottom:150px;">
+                    <div class="project-summary-content" id="interest-rate">
+                        <h4 class="mb-20 text-warning text-glow">Interest Rate</h4>
+                        <div class="leaderboard-table-list pb-50 md-pb-80">
+                            <div class="table-responsive">
+                                <table class="mb-55">
+                                    <tr class="table-header">
+                                        <th>Project</th>
+                                        <th>Interest rate</th>
+                                        <th>Amount</th>
+                                        <th>Earning Date</th>
+                                    </tr>
+                                    <tbody id="tbl-interest-rate-content"></tbody>
+                                </table>
+                            </div>
+
+                            @await Component.InvokeAsync("AjaxPaging")
+                        </div>
+                    </div>
+
+                    <div class="ScrollSpy_sections" id="Schedule" style="padding-top:60px;">
+                        <h4 class="mb-20 text-warning text-glow">Commission</h4>
+                        <div class="leaderboard-table-list pb-140 md-pb-80">
+                            <div class="table-responsive">
+                                <table class="mb-55">
+                                    <tr class="table-header">
+                                        @*<th>Project</th>*@
+                                        <th>Amount</th>
+                                        <th>Referral</th>
+                                        <th>Remarks</th>
+                                        <th>Earning Date</th>
+                                    </tr>
+                                    <tbody id="tbl-commission-content"></tbody>
+                                </table>
+                            </div>
+                            @await Component.InvokeAsync("AjaxPagingCommission")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template-interest" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        <td>
+            <div class="previous-gaming list1Custom">
+                <div class="previous-image">
+                    <img src="{{TokenImage}}" />
+                </div>
+                <div class="previous-price">
+                    <div class="dsc">{{TokenName}}</div>
+                    <h6 class="mb-0">{{TokenCode}}</h5>
+                </div>
+            </div>
+        </td>
+        <td>{{InterestedRate}}%</td>
+        <td>{{Amount}} @(CommonConstants.TOKEN_IN_CODE)</td>
+        <td>{{CreatedOn}}</td>
+    </tr>
+</script>
+
+<script id="table-template-commission" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        @*<td>
+            <div class="previous-gaming list1Custom">
+                <div class="previous-image">
+                    <img src="{{TokenImage}}" />
+                </div>
+                <div class="previous-price">
+                    <div class="dsc">{{TokenName}}</div>
+                    <h6 class="mb-0">{{TokenCode}}</h5>
+                </div>
+            </div>
+        </td>*@
+        <td>{{Amount}} @(CommonConstants.TOKEN_IN_CODE)</td>
+        <td>{{ReferralName}}</td>
+        <td>{{Remarks}}</td>
+        <td>{{CreatedOn}}</td>
+    </tr>
+</script>

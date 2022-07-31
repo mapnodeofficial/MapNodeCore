@@ -1,0 +1,75 @@
+﻿@model RegisterViewModel
+
+@section Styles{}
+
+@section Scripts{
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+
+    <script src="~/client-app/controllers/account/register.js" asp-append-version="true"></script>
+    <script>
+        var register = new registerController();
+        register.initialize();
+    </script>
+}
+
+<!-- SignUp-SignIn_Sectioon -->
+<div class="SignUp_SignIn_Form_Sect">
+    <div class="SignUp_SignIn_Form_SectBG"></div>
+    <div class="container">
+        <div class="SignUp_SignIn_Form_Content">
+            <div class="SignUp_SignIn_Form">
+                <h2>Sign up</h2>
+                <h3>Inter your name, valid email address and password to register your account</h3>
+                <form action="">
+
+                    @Html.AntiForgeryToken()
+                    <div class="EmailFild">
+                        <lable>Email Address</lable>
+                        <input type="email" placeholder="Enter your email address" id="txtEmail" autocomplete="off">
+                    </div>
+
+                    <div class="PasswordFild">
+                        <lable>Password</lable>
+                        <input type="password" placeholder="Enter your password" id="txtPassword" autocomplete="off">
+                    </div>
+                    <div class="PasswordFild">
+                        <lable>Confirm password</lable>
+                        <input type="password" placeholder="Enter your password" id="txtConfirmPassword" autocomplete="off">
+                    </div>
+
+                    <div class="EmailFild">
+                        <lable>Sponsor</lable>
+                        <input type="text" placeholder="Enter your sponsor" value="@Model.Sponsor" id="txtSponsor" autocomplete="off">
+                    </div>
+
+                    <div class="EmailFild mb-3">
+                        <lable>BEP20 Address</lable>
+                        <input type="text" placeholder="Enter your BEP20 Address" id="txtBNBBEP20PublishKey" autocomplete="off">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <div class="col-md-offset-2 col-md-10">
+                            <recaptcha />
+                            <span class="text-danger" id="recaptchaErrorMessage"></span>
+                        </div>
+                    </div>
+
+                    <a href="javascript:void(0)" id="btnRegister">
+                        <div class="text-center black-shape-bigCustom">
+                            <button type="button">Submit</button>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </div>
+                    </a>
+                </form>
+                <h4>Already have an account ? <a href="/login">Sign in now !</a></h4>
+            </div>
+            <div class="singUpformShadow"></div>
+        </div>
+    </div>
+</div>
+<!-- SignUp-SignIn_Sectioon END -->

@@ -1,0 +1,1449 @@
+﻿@model HomeViewModel
+
+@section Styles{
+    <link href="~/client-app/controllers/home/index.css" rel="stylesheet" />
+    <link href="~/client-app/controllers/home/animation.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/client-side/earntoken/assets/js/amcharts/core.js"></script>
+    <script src="~/client-side/earntoken/assets/js/amcharts/charts.js"></script>
+    <script src="~/client-side/earntoken/assets/js/amcharts/animated.js"></script>
+
+    <script src="~/client-app/controllers/home/index.js"></script>
+    <script>
+        var homeController = new HomeController();
+        homeController.initialize();
+    </script>
+}
+
+<div id="sc-banner" class="sc_banner_V3 banner-bg position-relative">
+    <div class="container">
+        <div class="banner-content V3_BanerContent">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="sc_banner_V3_left">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s" style="visibility: visible; animation-duration: 0.6s; animation-delay: 0.4s; animation-name: fadeInUp;">
+                            Map <span class=" text-success">Node</span><br>is a decentralized financial
+                            <span>
+                                <img src="~/client-side/earntoken/assets/images/icons/dollar-dollar-color.svg" alt="" class="img-fluid">
+                            </span> infrastructure<br />
+                            on <span class="text-warning">Bsc Bep20</span>
+                            <span>
+                                <img src="~/client-side/earntoken/assets/images/icons/rocket-dynamic-color.svg" alt="" class="img-fluid">
+                            </span>
+                        </h2>
+                        <p class="lead " style="color:#fff;font-family:' Bergern','Poppins',Sans-serif;font-size:15px;font-weight:600;letter-spacing:5.7px;margin-bottom:-7px;padding-left:29px">POWERED BY</p>
+                        <p class="lead"><img src="~/images/logo-partner/logo-bscscan-white.svg" style="width:187px"></p>
+                        <div class="gamfi_V2_hero_Btns wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.6s; animation-name: fadeInUp;">
+                            <a href="@Url.Action("Index","Exchange")" class="readon white-btn hover-shape VIEW_Projects_Btn">
+                                <span class="btn-text">Join Seed Round</span>
+                                <span class="hover-shape1"></span>
+                                <span class="hover-shape2"></span>
+                                <span class="hover-shape3"></span>
+                            </a>
+                            <a href="@Url.Action("Index","Saving")" class="readon black-shape Apply_Project_Btn">
+                                <span class="btn-text">Join Saving</span>
+                                <span class="hover-shape1"></span>
+                                <span class="hover-shape2"></span>
+                                <span class="hover-shape3"></span>
+                            </a>
+                        </div>
+                        <p style="text-align:left;margin-top:15px;
+                                    color:#fff;font-family:' Bergern','Poppins',Sans-serif;
+                                    font-size:16px;font-weight:600;letter-spacing:0;width:auto">
+                            Join Our <span class="text-success ">300k+ Member</span> Communities!
+                            <a href="@(CommonConstants.FB_OFFICIAL)" class="hero-social -only" target="_blank">
+                                <i class="icon-facebook"></i>
+                            </a>
+                            <a href="@(CommonConstants.TWITTER_OFFICIAL)" class="hero-social -only" target="_blank">
+                                <i class="icon-twitter"></i>
+                            </a>
+                            <a href="@(CommonConstants.TELEGRAM_COMMUNITY)" class="hero-social -only" target="_blank">
+                                <i class="icon-telegram"></i>
+                            </a>
+                            <a href="@(CommonConstants.TELEGRAM_OFFICIAL)" class="hero-social -only" target="_blank">
+                                <i class="icon-telegram"></i>
+                            </a>
+                        </p>
+                        <div class="buyTokenlogos">
+                            <h6>Buy Token On</h6>
+                            <ul>
+                                <li><a href="\"><img src="~/client-side/earntoken/assets/images/homeV2/buyTokenlogo1.png" alt="logo" class="img-fluid" /></a></li>
+                                <li><a href="\"><img src="~/client-side/earntoken/assets/images/homeV2/buyTokenlogo2.png" alt="logo" class="img-fluid" /></a></li>
+                                <li><a href="\"><img src="~/client-side/earntoken/assets/images/homeV2/buyTokenlogo3.png" alt="logo" class="img-fluid" /></a></li>
+                                <li class="m-0"><a href="\"><img src="~/client-side/earntoken/assets/images/homeV2/buyTokenlogo4.png" alt="logo" class="img-fluid" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="sc_banner_V3_right">
+                        <div class="Animetion_Avater">
+                            <img src="~/images/banner/homebanner.png" width="700" alt="img" class="img-fluid">
+                        </div>
+                        <ul>
+                            <li>
+                                <h3>Market Cap</h3>
+                                <h4 class="counter-number">$<span class="counter">490.88</span> M</h4>
+                            </li>
+                            <li>
+                                <h3>TVL</h3>
+                                <h4 class="counter-number">$<span class="counter">38.60</span> M</h4>
+                            </li>
+                            <li class="m-0">
+                                <h3>Fund Raised</h3>
+                                <h4 class="counter-number">$<span class="counter">160.48</span> M</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Multi_Block_Chains_Sect">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="Multi_Block_Chains_Left">
+                        <h3>Supported <span><img src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" class="img-fluid"></span></h3>
+                        <h3>Multi - Block Chains</h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="Multi_Block_Chains_RightSect">
+                        <div class="gamfi-partner-section Multi_Block_Chains_Right">
+                            <div class="gamfi-partner-inner Multi_Block_Chains_RightContent">
+                                <div class="partner-image">
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain1.png" alt="icon" class="img-fluid"></a>
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain2.png" alt="icon" class="img-fluid"></a>
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain3.png" alt="icon" class="img-fluid"></a>
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain4.png" alt="icon" class="img-fluid"></a>
+                                </div>
+                                <div class="partner-image">
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain5.png" alt="icon" class="img-fluid"></a>
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain6.png" alt="icon" class="img-fluid"></a>
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain3.png" alt="icon" class="img-fluid"></a>
+                                    <a href="#"><img src="~/client-side/earntoken/assets/images/icons/BlockChain2.png" alt="icon" class="img-fluid"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="redBordergradient"></span>
+        <span class="greenBordergradient"></span>
+    </div>
+    @*<div class="Ufo_Img wow slideInLeft" data-wow-delay="300ms" data-wow-duration="2500ms" style="visibility: visible; animation-duration: 2500ms; animation-delay: 300ms; animation-name: slideInLeft;">
+            <img src="~/client-side/earntoken/assets/images/homeV3/uFO.png" alt="ufo" class="img-fluid">
+        </div>*@
+</div>
+
+<!-- How to Participate Srart -->
+<div class="How_to_Participate_Sect">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 wow fadeInLeft" data-wow-delay="0.3s" data-wow-duration="0.4s">
+                <div class="How_to_Participate_Left">
+                    <div class="sec-heading">
+                        <div class="sub-inner mb-15">
+                            <span class="sub-title text-white ">3 Easy Steps</span>
+                            <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                        </div>
+                        <h2 class="title text-warning">Seed Round Policy</h2>
+                    </div>
+                    <div class="How_to_Participate_Left_Contnet">
+                        <div class="Multi_Chain_Support_right_list">
+                            <ul>
+                                <li>
+                                    <span>
+                                        <img src="/client-side/earntoken/assets/images/icons/icon-Check.svg" class="img-fluid">
+                                    </span>
+                                    <strong>Price:</strong> <strong class="text-danger ml-5"> $0.02</strong>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="/client-side/earntoken/assets/images/icons/icon-Check.svg"
+                                             class="img-fluid">
+                                    </span>
+                                    <strong>Total Sale:</strong> <strong class="text-success ml-5"> 20,000,000.00</strong>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="/client-side/earntoken/assets/images/icons/icon-Check.svg"
+                                             class="img-fluid">
+                                    </span>
+                                    <strong>Min Buy:</strong> <strong class="text-warning ml-5"> 0.10 BNB</strong>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="/client-side/earntoken/assets/images/icons/icon-Check.svg"
+                                             class="img-fluid">
+                                    </span>
+                                    <strong>Max Buy:</strong> <strong class="text-warning ml-5"> 50 BNB</strong>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="/client-side/earntoken/assets/images/icons/icon-Check.svg"
+                                             class="img-fluid">
+                                    </span>
+                                    <strong>Commission:</strong> <strong class="text-warning ml-5"> Level 1 9%, Level 2 6%, Level 3 3%</strong>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="/client-side/earntoken/assets/images/icons/icon-Check.svg"
+                                             class="img-fluid">
+                                    </span>Supports payment by BNB of BEP20 network
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="targeted-raise">
+                            <div class="all-raise mb-10 mt-20">Sale Start In</div>
+                            <div class="price-counter">
+                                <div class="timer timer_1 timersale">
+                                    <ul>
+                                        <li class="days">42<span>D</span></li>
+                                        <li class="hours">06<span>H</span></li>
+                                        <li class="minutes">37<span>M</span></li>
+                                        <li class="seconds">23<span>S</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="How_to_Participate_Left_Btn">
+                            <a class="view-more black-shape" href="@Url.Action("Index","Exchange")">
+                                <span class="btn-text">Join Now</span>
+                                <i class="icon-arrow_right"></i>
+                            </a>
+                        </div>
+                        <img src="~/images/bannersaleround.png" width="400" alt="img" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="How_to_Participate_right_Contnet">
+                    <div class="How_to_Participate_right_Card How_to_Participate_right_Card1 wow fadeInRight" data-wow-delay="0.2s" data-wow-duration="0.4s">
+                        <div class="How_to_Participate_right_Card_number">
+                            <img src="~/images/One.png" height="110" class="img-fluid-2" />
+                        </div>
+                        <div class="How_to_Participate_right_CardText">
+                            <h4>Create New Account</h4>
+                            <p>Create an account to participate in the sale and share the community with the affiliate link to get more BNB</p>
+                        </div>
+                    </div>
+                    <div class="How_to_Participate_right_Card How_to_Participate_right_Card2 wow fadeInRight" data-wow-delay="0.3s" data-wow-duration="0.5s">
+                        <div class="How_to_Participate_right_Card_number">
+                            <img src="~/images/Two.png" height="110" class="img-fluid-2" />
+                        </div>
+                        <div class="How_to_Participate_right_CardText">
+                            <h4>Deposit BNB</h4>
+                            <p>The system accepts payment when buying MNI token with BNB Bsc Bep20</p>
+                        </div>
+                    </div>
+                    <div class="How_to_Participate_right_Card How_to_Participate_right_Card3 wow fadeInRight" data-wow-delay="0.4s" data-wow-duration="0.6s">
+                        <div class="How_to_Participate_right_Card_number">
+                            <img src="~/images/Three.png" height="110" class="img-fluid-2" />
+                        </div>
+                        <div class="How_to_Participate_right_CardText">
+                            <h4>Buy MNI Token</h4>
+                            <p>Go to the exchange page, then fill in the amount of MNI token and press submit</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="lockerImg">
+                <img src="~/images/bannersaleround.png" width="400" alt="img" class="img-fluid" />
+            </div>*@
+    </div>
+    @*<div class="moon_imgBg">
+            <img src="~/client-side/earntoken/assets/images/icons/earthBg.svg" alt="img" class="img-fluid" />
+        </div>*@
+</div>
+<!-- How to Participate End -->
+<!-- Key Points Start -->
+<div class="Key_Points_section Key_PointsV2_section main-project-area">
+    <div class="container">
+        <div class="sec-inner align-items-center">
+            <div class="sec-heading">
+                <div class="sub-inner mb-15">
+                    <span class="sub-title text-white">Key Points</span>
+                    <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                </div>
+                <h2 class="title text-warning">Why Map Node</h2>
+            </div>
+            <div class="Key_Points_Conttent">
+                <div class="row">
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.4s">
+                        <div class="Key_Points_Items">
+                            <div class="Key_Points_Item_img">
+                                <img src="~/images/ETHCompatibility.png" alt="icon" class="img-fluid" />
+                            </div>
+                            <div class="Key_Points_Item_Text">
+                                <h3 class="">ETH Compatibility</h3>
+                                <p>ETH Compatibility Industry dominance, established tech stack, tools, languages, standards, enterprise adoption</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.5s">
+                        <div class="Key_Points_Items">
+                            <div class="Key_Points_Item_img">
+                                <img src="~/images/Security.png" alt="icon" class="img-fluid" />
+                            </div>
+                            <div class="Key_Points_Item_Text">
+                                <h3 class="">Security</h3>
+                                <p>Security Modular "security as a service", provided either by Ethereum or by a pool of professional validators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s">
+                        <div class="Key_Points_Items">
+                            <div class="Key_Points_Item_img">
+                                <img src="~/images/Scalability.png" alt="icon" class="img-fluid" />
+                            </div>
+                            <div class="Key_Points_Item_Text">
+                                <h3 class="">Scalability</h3>
+                                <p>Scalability Dedicated blockchains, scalable consensus algorithms, custom Wasm execution environments</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s">
+                        <div class="Key_Points_Items">
+                            <div class="Key_Points_Item_img">
+                                <img src="https://res.cloudinary.com/polygontech/image/upload/f_auto,q_auto,dpr_2,w_64,h_64/Join_the_Ecosystem_fe6eea51c1" alt="icon" class="img-fluid" />
+                            </div>
+                            <div class="Key_Points_Item_Text">
+                                <h3 class="">High mining productivity</h3>
+                                <p>Map Node PoS is a layer 2 scaling solution that achieves unprecedented transaction speed and cost savings by utilizing side-chains for transaction processing. Profit from 20% to 25% per month, specially profit paided by Map Node Token</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.7s">
+                        <div class="Key_Points_Items">
+                            <div class="Key_Points_Item_img">
+                                <img src="~/images/PersonTeam.png" alt="icon" class="img-fluid" />
+                            </div>
+                            <div class="Key_Points_Item_Text">
+                                <h3 class="">30+ Person Team</h3>
+                                <p>30+ person team with deep resources and proven track record. Map Node is run by a fully integrated team with a long term vision, and core team members have built successful blockchain projects and have experience at leading blue-chip consulting and finance institutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.7s">
+                        <div class="Key_Points_Items">
+                            <div class="Key_Points_Item_img">
+                                <img src="~/images/Partnerships.png" alt="icon" class="img-fluid" />
+                            </div>
+                            <div class="Key_Points_Item_Text">
+                                <h3 class="">Extensive partnerships</h3>
+                                <p>Extensive partnerships with market leading blockchain institutions ensuring broad scale and seamless experience. Within only a few weeks MapNode has secured partnerships with Chainlink, Brave, Grape, Altura and five secondary marketplaces</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Key Points Section End -->
+<!-- Multi-Chain Support Section start -->
+<div class="Multi_Chain_Support_Sect">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="Multi_Chain_Support_Left_Sect wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="0.4s">
+                    <div class="Multi_Chain_Support_img Animetion_Avater" style="top:40px !important">
+                        <img src="~/images/banner/banner2.png" width="500" alt="img" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="Multi_Chain_Support_right_Sect wow fadeInRight" data-wow-delay="0.2s" data-wow-duration="0.4s">
+                    <div class="sec-inner align-items-center mb-30">
+                        <div class="sec-heading">
+                            <div class="sub-inner mb-15">
+                                <span class="sub-title text-white ">Integration</span>
+                                <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                            </div>
+                            <h2 class="title mb-0 text-warning">Multi-Chain Support</h2>
+                        </div>
+                        <div class="Multi_Chain_Support_right_Content">
+                            <p>
+                                Map Node provides the foundational building layers for
+                                a new digital economy with following products: stable-coin, crypto/fiat,
+                                DEX, launchpad, lock liquidity and lock token and connecting crypto to the real world.
+                            </p>
+                            <div class="Multi_Chain_Support_right_list">
+                                <ul>
+                                    <li><span><img src="~/client-side/earntoken/assets/images/icons/icon-Check.svg" class="img-fluid" /></span>Binance Smart Chain</li>
+                                    <li><span><img src="~/client-side/earntoken/assets/images/icons/icon-Check.svg" class="img-fluid" /></span>Ethereum</li>
+                                    <li><span><img src="~/client-side/earntoken/assets/images/icons/icon-Check.svg" class="img-fluid" /></span>Polygon (Matic)</li>
+                                </ul>
+                                <ul class="m-0">
+                                    <li><span><img src="~/client-side/earntoken/assets/images/icons/icon-Check.svg" class="img-fluid" /></span>Avalanche</li>
+                                    <li><span><img src="~/client-side/earntoken/assets/images/icons/icon-Check.svg" class="img-fluid" /></span>Fuse</li>
+                                    <li><span><img src="~/client-side/earntoken/assets/images/icons/icon-Check.svg" class="img-fluid" /></span>OKEX Chain</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="OurPartnat_EathImg">
+            <img src="~/client-side/earntoken/assets/images/icons/earthBg.svg" alt="img" class="img-fluid" />
+        </div>
+        <div class="RocketImgBW">
+            <img src="~/client-side/earntoken/assets/images/icons/rocket.png" alt="img" class="img-fluid" />
+        </div>*@
+</div>
+<!-- Multi-Chain Support Section End -->
+@*<div class="SCALEANDPOWER">
+    <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-sm-12 col-md-6" data-wow-delay="0.5s">
+                <div class="mercury-animation">
+                    <div class="numbers">
+                        <div class="number-one"></div>
+                        <div class="number-two"></div>
+                    </div>
+                    <div id="earth-box-cover">
+                        <div class="earth-icons">
+                            <i class="icon-1"></i>
+                            <i class="icon-2"></i>
+                            <i class="icon-3"></i>
+                            <i class="icon-4"></i>
+                            <i class="icon-5"></i>
+                            <i class="icon-6"></i>
+                            <i class="icon-7"></i>
+                        </div>
+                        <div id="earth-box">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="sec-heading">
+                    <div class="sub-inner mb-15">
+                        <span class="sub-title text-white ">feature</span>
+                        <img class="heading-left-image" src="/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image">
+                    </div>
+                    <h2 class="title mb-0 text-success  mb-5">Scale and Power</h2>
+                </div>
+                <p class="lead">
+                    Map Node PoS is a layer 2 scaling solution that achieves
+                    unprecedented transaction speed and cost savings by utilizing side-chains for
+                    transaction processing. At the same time, POS ensures asset security using the robust
+                    Plasma bridging framework and a decentralized network of Proof-of-Stake (PoS) validators.
+                </p>
+
+                <p class="lead">
+                    <h4 class="text-warning">Speed </h4>
+                    Intuitive, efficient bridging, deposit and withdrawals.
+                    Transaction speeds of up to 65,000 tx/s means exponentially faster
+                    performance than Ethereum at 15 tx/s.
+                    Non-custodial architecture means users have control of their keys.
+                    Rely on the shared security of Ethereum with benefit of Map Node’s speed
+                </p>
+                <p class="lead">
+                    <h4 class="text-warning">Scalablility </h4>Compatible with major ERC standards.
+                    Secured by validators and checkpoints submitted to Ethereum.
+                    Minimal downtime over the course of 1.3B recorded transactions.
+                    A powerful and engaged community driving adoption and user engagement
+                </p>
+                <p class="lead">
+                    <h4 class="text-warning">Flexibility </h4>
+                    Full EVM compatibility means deploying your
+                    smart contracts directly on the Map Node chain.
+                    A composable blockchain means you’ve got a wide variety of apps to build on.
+                    Easy transfer to and from Map Node and Ethereum.
+                    Easy-to-use wallet on web and mobile.
+                </p>
+                <div class="gamfi_V2_hero_Btns wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.6s; animation-name: fadeInUp;">
+                    <a href="@Url.Action("Index","Exchange")" class="readon white-btn hover-shape VIEW_Projects_Btn">
+                        <span class="btn-text">Join Seed Round</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                    <a href="@Url.Action("Index","Saving")" class="readon black-shape Apply_Project_Btn">
+                        <span class="btn-text">Join Saving</span>
+                        <span class="hover-shape1"></span>
+                        <span class="hover-shape2"></span>
+                        <span class="hover-shape3"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<div class="Tokenomics_section main-project-area">
+    <div class="container">
+        <div class="sec-inner align-items-center mb-30">
+            <div class="sec-heading">
+                <div class="sub-inner mb-15">
+                    <span class="sub-title  text-white">Statistics</span>
+                    <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                </div>
+                <h2 class="title mb-0 text-warning">Tokenomics</h2>
+            </div>
+            <div class="TokenomicsContents">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="TokenomicsContentsLeft wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="0.4s">
+                            <div class="TokenomicsListSect">
+                                <ul>
+                                    <li>
+                                        <span class="icon-muines-custom"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4>Token Name</h4>
+                                            <h5 class="counter-number">Map Node</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="icon-muines-custom"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4>Token Symbol</h4>
+                                            <h5 class="counter-number">MNI</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="icon-muines-custom"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4>Decimals</h4>
+                                            <h5 class="counter-number">18</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="icon-muines-custom"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4>Max. Supply</h4>
+                                            <h5 class="counter-number">500,000,000</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="icon-muines-custom"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4>Token Platform</h4>
+                                            <h5 class="counter-number">BSC BEP20</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="icon-muines-custom"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4>Token Standard</h4>
+                                            <h5 class="counter-number">BEP20</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="icon-muines-custom"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4>Token Address</h4>
+                                            <h5 class="counter-number">
+                                                <a href="https://bscscan.com/token/0x6FBB9C52b853363B334C937b35b47a0c3EcFE158"
+                                                   target="_blank" class="text-warning ">
+                                                    0x6FBB9C5...0c3EcFE158
+                                                </a>
+                                            </h5>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="custom-display">
+                                <div id="chartdiv"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="TokenomicsContentsLeft wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="0.4s">
+                            <h4 class="counter-number mb-2">Total Supply :  <span class="counter text-warning">500,000,000</span></h4>
+                            @*<h4 class="counter-number text-warning">Seed Round :  $<span class="counter ">0.02</span></h4>*@
+                            <div class="TokenomicsListSect">
+                                <ul>
+                                    <li>
+                                        <span class="Marketing"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class="text-white ">Marketing</h4>
+                                            <h5 class="counter-number">10,000,000 | <span class="counter">2</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="SeedRound"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-SeedRound">Seed Round</h4>
+                                            <h5 class="counter-number">20,000,000 | <span class="counter">4</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="AngelSale"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-AngelSale">Angel Round</h4>
+                                            <h5 class="counter-number">30,000,000 | <span class="counter">6</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="PrivateSale"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-PrivateSale">Private Round</h4>
+                                            <h5 class="counter-number">40,000,000 | <span class="counter">8</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="PublishSale"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-PublishSale">Publish Round</h4>
+                                            <h5 class="counter-number">50,000,000 | <span class="counter">10</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="Saving"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-Saving">Saving</h4>
+                                            <h5 class="counter-number">50,000,000 | <span class="counter">10</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="Staking"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-Staking">Staking</h4>
+                                            <h5 class="counter-number">20,000,000 | <span class="counter">4</span>%</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul style="margin-left: 15px;">
+                                    <li>
+                                        <span class="Capital"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-Capital">Ecosystem</h4>
+                                            <h5 class="counter-number">40,000,000 | <span class="counter">8</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="DrinkToEarnNetwork"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-DrinkToEarnNetwork">MN To Earn</h4>
+                                            <h5 class="counter-number">100,000,000 | <span class="counter">20</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="MiningPool"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-MiningPool">MN Pool</h4>
+                                            <h5 class="counter-number">40,000,000 | <span class="counter">8</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="Game"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-Game">Bounty</h4>
+                                            <h5 class="counter-number">20,000,000 | <span class="counter">4</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="TeamDev"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-TeamDev">Team</h4>
+                                            <h5 class="counter-number">30,000,000 | <span class="counter">6</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="Liquidity"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-Liquidity">Liquidity</h4>
+                                            <h5 class="counter-number">40,000,000 | <span class="counter">8</span>%</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="AdvisorExperts"></span>
+                                        <div class="TokenomicsList_text">
+                                            <h4 class=" text-AdvisorExperts">Advisor & Experts</h4>
+                                            <h5 class="counter-number">10,000,000 | <span class="counter">2</span>%</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gamfi-previous-section TokenomicsTable_Sect md-pb-50">
+    <div class="container">
+        <div class="sec-inner align-items-center d-flex justify-content-between mb-30">
+            <div class="sec-heading">
+                <div class="sub-inner mb-15">
+                    <span class="sub-title  text-white">Statistics</span>
+                    <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                </div>
+                <h2 class="title mb-0 xs-pb-20 text-warning">Distribution</h2>
+            </div>
+        </div>
+        <div class="TokenomicsTable">
+            <div class="leaderboard-table-list pb-140 md-pb-80">
+                <div class="container">
+                    <table>
+                        <tr>
+                            <th class="text-warning">Category</th>
+                            <th class="text-warning">Allocation</th>
+                            <th class="text-warning">Raise</th>
+                            <th class="text-warning">Address</th>
+                        </tr>
+                        <tr>
+                            <td>Marketing</td>
+                            <td>2%</td>
+                            <td>10,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x4A7007384ef52327934b23b8cD6C4E1F4D468f66"
+                                   target="_blank">
+                                    0x4A7007384ef52327934b23b8cD6C4E1F4D468f66
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="dark">
+                            <td>Seed Round</td>
+                            <td>4%</td>
+                            <td>20,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x6Beb6757899Ed885CB02E079cD94cF68730dfbCb"
+                                   target="_blank">
+                                    0x6Beb6757899Ed885CB02E079cD94cF68730dfbCb
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Angel Round</td>
+                            <td>6%</td>
+                            <td>30,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0xf62b60fD186C1B476011f43a2AC50B89B776c8A5"
+                                   target="_blank">
+                                    0xf62b60fD186C1B476011f43a2AC50B89B776c8A5
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="dark">
+                            <td>Private Round</td>
+                            <td>8%</td>
+                            <td>40,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0xb7DED569e180172149bcB7F77322034cA47cE5b7"
+                                   target="_blank">
+                                    0xb7DED569e180172149bcB7F77322034cA47cE5b7
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Publish Round</td>
+                            <td>10%</td>
+                            <td>50,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x66625ba4619569F02a4DeCF7F55D047eaEa88444"
+                                   target="_blank">
+                                    0x66625ba4619569F02a4DeCF7F55D047eaEa88444
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="dark">
+                            <td>Saving</td>
+                            <td>10%</td>
+                            <td>50,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x3847028076D3F2d1d6d918DFAc107d3c9a861005"
+                                   target="_blank">
+                                    0x3847028076D3F2d1d6d918DFAc107d3c9a861005
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Staking</td>
+                            <td>4%</td>
+                            <td>20,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x5593BB10fbC5587e7988A562D11114BeBe49EBe9"
+                                   target="_blank">
+                                    0x5593BB10fbC5587e7988A562D11114BeBe49EBe9
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="dark">
+                            <td>Ecosystem</td>
+                            <td>8%</td>
+                            <td>40,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x093789dc489312f4A8cb019170764d5292bC98Bc"
+                                   target="_blank">
+                                    0x093789dc489312f4A8cb019170764d5292bC98Bc
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MN To Earn</td>
+                            <td>20%</td>
+                            <td>100,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x47a4D22dcF63ae475c2722BA3b311A4e8a834D85"
+                                   target="_blank">
+                                    0x47a4D22dcF63ae475c2722BA3b311A4e8a834D85
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="dark">
+                            <td>MN Pool</td>
+                            <td>8%</td>
+                            <td>40,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0xa3212ddDc9Cd473A15671567851a2825D144714C"
+                                   target="_blank">
+                                    0xa3212ddDc9Cd473A15671567851a2825D144714C
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bounty</td>
+                            <td>4%</td>
+                            <td>20,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0xb77366191C20D06Ca52fB26ee2da5E90f225A601"
+                                   target="_blank">
+                                    0xb77366191C20D06Ca52fB26ee2da5E90f225A601
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="dark">
+                            <td>Team</td>
+                            <td>6%</td>
+                            <td>30,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x9b7b40b0424F9e8b8581C88b9d8264c66e208815"
+                                   target="_blank">
+                                    0x9b7b40b0424F9e8b8581C88b9d8264c66e208815
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Liquidity</td>
+                            <td>8%</td>
+                            <td>40,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x7E3BF01144E1b0835aB6fC6Dac23B4859c4a3572"
+                                   target="_blank">
+                                    0x7E3BF01144E1b0835aB6fC6Dac23B4859c4a3572
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="dark">
+                            <td>Advisor & Experts</td>
+                            <td>2%</td>
+                            <td>10,000,000</td>
+                            <td>
+                                <a href="https://bscscan.com/address/0x196aF00DE93De7C28ECb486472b051BCf69F35e7"
+                                   target="_blank">
+                                    0x196aF00DE93De7C28ECb486472b051BCf69F35e7
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gamfiRoadMap">
+    <div class="RoadMapSect">
+        <div class="container RoadMapContainer">
+            <div class="sec-heading text-center mb-55">
+                <div class="sub-inner mb-15">
+                    <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps2.png" alt="Steps-Image">
+                    <span class="ml-10 mr-10 sub-title text-white ">Our Goals</span>
+                    <img class="heading-right-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image">
+                </div>
+                <h2 class="title text-warning">Roadmap</h2>
+            </div>
+            <div class="circle-ripple"></div>
+            <div class="Roadmap2021">
+                <div class="roadmap2021Divider">
+                    <span>2022</span>
+                </div>
+                <div class="roadmap2022Divider">
+                    <span>2024</span>
+                </div>
+                <div class="row m-0">
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapLeftConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox1">
+                                <h3 class="text-warning">01 July 2022</h3>
+                                <ul class="">
+                                    <li><span class="icon-check-custom"></span>Building a global Map Node ecosystem platform</li>
+                                    <li><span class="icon-check-custom"></span>Build social channels Facebook, Twitter, Instagram, Telegram, Discord, Youtube, Support Channel</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapRightConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox2" style="
+    margin-top: 60px;
+">
+                                <h3 class="text-warning">03 September 2022</h3>
+                                <ul class="">
+                                    <li><span class="icon-muines-custom"></span>Officially open sale and launch Map Node platform globally through Seed Round, Angel Round, Private Round, Publish Round</li>
+                                    <li><span class="icon-muines-custom"></span>Launch of the Saving</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapLeftConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox3 disable" style="
+    margin-top: 20px;
+">
+                                <h3 class="text-warning">20 December 2022</h3>
+                                <ul class="">
+                                    <li><span class="icon-muines-custom"></span>Listing on PancakeSwap and 3 international DEXs</li>
+                                    <li><span class="icon-muines-custom"></span>Web 3.0 Drink Coffee development</li>
+                                    <li><span class="icon-muines-custom"></span>ISO (Initial Shop Offering)</li>
+                                    <li><span class="icon-muines-custom"></span>First Drink Coffee demo</li>
+                                    <li><span class="icon-muines-custom"></span>Full-scale platform launch</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapRightConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox4 disable" style="
+    margin-top: 20px;
+">
+                                <h3 class="text-warning">01 February 2023</h3>
+                                <ul class="">
+                                    <li><span class="icon-muines-custom"></span>Development of NFT Marketplace</li>
+                                    <li><span class="icon-muines-custom"></span>First NFT pre-orders</li>
+                                    <li><span class="icon-muines-custom"></span>Launch of the NFT token</li>
+                                    <li><span class="icon-muines-custom"></span>Full-scale platform launch</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapLeftConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox5 disable" style="
+    margin-top: 20px;
+">
+                                <h3 class="text-warning">15 May 2023</h3>
+                                <ul class="">
+                                    <li><span class="icon-muines-custom"></span>List Map Node token on CoinMarketCap, Coingecko, Coinnomi, LiveCoinWatch</li>
+                                    <li><span class="icon-muines-custom"></span>Integration NFT auction system</li>
+                                    <li><span class="icon-muines-custom"></span>Launch of the Staking</li>
+                                    <li><span class="icon-muines-custom"></span>Development mobile app for iOS and Android.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapRightConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox6 disable" style="
+    margin-top: 20px;
+">
+                                <h3 class="text-warning">01 December 2023</h3>
+                                <ul class="">
+                                    <li><span class="icon-muines-custom"></span>Launch Liquidity Farming</li>
+                                    <li><span class="icon-muines-custom"></span>Launch Token Launch Platform</li>
+                                    <li><span class="icon-muines-custom"></span>Launch Dual Investment</li>
+                                    <li><span class="icon-muines-custom"></span>Launch Auto-Invest</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapLeftConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox7 disable" style="
+    margin-top: 20px;
+">
+                                <h3 class="text-warning">15 June 2024</h3>
+                                <ul class="">
+                                    <li><span class="icon-muines-custom"></span>Launch Map Node Pool</li>
+                                    <li><span class="icon-muines-custom"></span>Application for crypto exchange</li>
+                                    <li><span class="icon-muines-custom"></span>List Map Node token on major international P2P exchanges like Binance, Huobi, Gate.io</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="RodmapConetent RodmapRightConetent">
+                            <div class="RodmapConetentbox RodmapConetentbox8 disable" style="margin-top: 20px;">
+                                <h3 class="text-warning">01 October 2024</h3>
+                                <ul class="">
+                                    <li><span class="icon-muines-custom"></span>Launch a digital bank</li>
+                                    <li><span class="icon-muines-custom"></span>Launching a global open-ended investment fund</li>
+                                    <li><span class="icon-muines-custom"></span>Launching MN30 blockchain</li>
+                                    <li><span class="icon-muines-custom"></span>Build a community to join the MN30 blockchain</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gamfi-team-section pt-80 pb-95 md-pt-75 md-pb-80">
+    <div class="container">
+        <div class="sec-heading text-center mb-55">
+            <div class="sub-inner  mb-15">
+                <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps2.png" alt="Steps-Image">
+                <span class="ml-10 mr-10 sub-title text-white ">Advisors</span>
+                <img class="heading-right-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image">
+            </div>
+            <h2 class="title text-warning">Team Members</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/_VDqdfvv_400x400.png" alt="Team-image">
+                    <h4 class="team-title mb-8"><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_1)" target="_blank">@(CommonConstants.MEMBER_NAME_1)</a></h4>
+                    <div class="dsc text-success">Founder</div>
+                    <ul class="team-icon-list">
+                        @*<li><a href="#"><i class="icon-linkedin"></i></a></li>*@
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_1)" target="_blank"><i class="icon-twitter"></i></a></li>
+                        @*<li><a href="#"><i class="icon-facebook"></i></a></li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/BgaAaRig_400x400.jpg" alt="Team-image">
+                    <h4 class="team-title mb-8"><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_2)" target="_blank">@(CommonConstants.MEMBER_NAME_2)</a></h4>
+                    <div class="dsc text-success ">CEO</div>
+                    <ul class="team-icon-list">
+                        @*<li><a href="#"><i class="icon-linkedin"></i></a></li>*@
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_2)" target="_blank"><i class="icon-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/mqSZAck0_400x400.jpg" alt="Team-image">
+                    <h4 class="team-title mb-8 "><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_3)" target="_blank">@(CommonConstants.MEMBER_NAME_3)</a></h4>
+                    <div class="dsc text-success ">CEO</div>
+                    <ul class="team-icon-list">
+                        @*<li><a href="#"><i class="icon-linkedin"></i></a></li>*@
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_3)" target="_blank"><i class="icon-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/DQmxxOcL_400x400.jpg" alt="Team-image">
+                    <h4 class="team-title mb-8 "><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_4)" target="_blank">@(CommonConstants.MEMBER_NAME_4)</a></h4>
+                    <div class="dsc text-success ">Marketing Manager</div>
+                    <ul class="team-icon-list">
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_4)" target="_blank"><i class="icon-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/z8KwfnA3_400x400.jpg" alt="Team-image">
+                    <h4 class="team-title mb-8 "><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_5)" target="_blank">@(CommonConstants.MEMBER_NAME_5)</a></h4>
+                    <div class="dsc text-success ">Project Manager</div>
+                    <ul class="team-icon-list">
+                        @*<li><a href="#"><i class="icon-linkedin"></i></a></li>*@
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_5)" target="_blank"><i class="icon-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/OW-xVizu_400x400.jpg" alt="Team-image">
+                    <h4 class="team-title mb-8 "><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_6)" target="_blank">@(CommonConstants.MEMBER_NAME_6)</a></h4>
+                    <div class="dsc text-success ">Software Engineer</div>
+                    <ul class="team-icon-list">
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_6)" target="_blank"><i class="icon-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/Ixh_-0Ic_400x400.jpg" alt="Team-image">
+                    <h4 class="team-title mb-8 "><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_7)" target="_blank">@(CommonConstants.MEMBER_NAME_7)</a></h4>
+                    <div class="dsc text-success ">Software Engineer</div>
+                    <ul class="team-icon-list">
+                        @*<li><a href="#"><i class="icon-linkedin"></i></a></li>*@
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_7)" target="_blank"><i class="icon-twitter"></i></a></li>
+                        @*<li><a href="#"><i class="icon-facebook"></i></a></li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item text-center active-shape">
+                    <img width="200" src="~/images/team/UBIzZcXq_400x400.jpg" alt="Team-image">
+                    <h4 class="team-title mb-8 "><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_8)" target="_blank">@(CommonConstants.MEMBER_NAME_8)</a></h4>
+                    <div class="dsc text-success ">Software Engineer</div>
+                    <ul class="team-icon-list">
+                        @* <li><a href="#"><i class="icon-linkedin"></i></a></li>*@
+                        <li><a href="@(CommonConstants.TWITTER_ACCOUNT_URL_8)" target="_blank"><i class="icon-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gamfi-team-section gamfi_Our_mentor_section pt-115 pb-85 md-pt-75 md-pb-42">
+    <div class="container">
+        <div class="sec-heading text-center mb-55">
+            <div class="sub-inner  mb-15">
+                <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps2.png" alt="Steps-Image">
+                <span class="ml-10 mr-10 sub-title text-white ">Backers</span>
+                <img class="heading-right-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image">
+            </div>
+            <h2 class="title text-warning">Our Partners</h2>
+        </div>
+        <div class="Our_PARTNERSContnetSect">
+            <ul class="OurPartnatList">
+                <li>
+                    <a href="//bscscan.com/" target="_blank">
+                        <img src="/images/logo-partner/logo-bscscan-white.svg" class="img-fluid">
+                    </a>
+                    </>
+                <li>
+                    <a href="//coinquora.com/" target="_blank">
+                        <img src="/images/logo-partner/coinquora.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//thecointimes.net/" target="_blank">
+                        <img src="/images/logo-partner/coin-ret-3-1.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/Coinblaze.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/coincronica.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/coinedict.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/cryptonode.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//defi-planet.com/" target="_blank">
+                        <img src="/images/logo-partner/defiplanet.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/bitcointalk.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/bitcointech.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/cointiger.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/Coinmarketcap.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/Coinomi.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="//egamers.io/" target="_blank">
+                        <img src="/images/logo-partner/egamerio-1.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="//twitter.com/_FearlessGG" target="_blank">
+                        <img src="/images/logo-partner/fearless.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="//mazer.gg/" target="_blank">
+                        <img src="/images/logo-partner/mazer-1.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/Icoinsider.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/uniswap-uni-logo.svg" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/pancakeswap.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/Dawn_Global_yellow-logo.svg" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/TheBlockoPedia.png" class="img-fluid" style="height:60px">
+                    </a>
+                </li>
+                <li>
+                    <a href="//www.baboon.vc/" target="_blank">
+                        <img src="/images/logo-partner/VC-Baboon.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//twitter.com/bantercap" target="_blank">
+                        <img src="/images/logo-partner/VC-Banter-Capital.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//bcainvestments.com/" target="_blank">
+                        <img src="/images/logo-partner/VC-BCA-INVESTMENTS.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//blockchainff.com/" target="_blank">
+                        <img src="/images/logo-partner/VC-Blockchain-Founders-Fund.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-BLUEWHEEL-CAPITAL.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-COINPUBLIC.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-CRITERION.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-Dreamboat.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-Edimus.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//gd10.ventures/" target="_blank">
+                        <img src="/images/logo-partner/VC-GD-10-VENTURES.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-GEMS-LAB.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//kangaroocapital.io/" target="_blank">
+                        <img src="/images/logo-partner/VC-Kangaroo-Capital.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//ldcap.com/" target="_blank">
+                        <img src="/images/logo-partner/VC-LD-Capital.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-LIGHTHOUSE.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//ldcap.com/" target="_blank">
+                        <img src="/images/logo-partner/VC-MASTER-VENTURES.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//metavest.capital/" target="_blank">
+                        <img src="/images/logo-partner/VC-Metavest-Capital.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//r-930capital.com/" target="_blank">
+                        <img src="/images/logo-partner/VC-r930.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//www.solarecofund.com/" target="_blank">
+                        <img src="/images/logo-partner/VC-Solar-Eco-Fund.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="//unanimous.vc/" target="_blank">
+                        <img src="/images/logo-partner/VC-Unanimous.png" class="img-fluid">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="//www.vestigium.io/" target="_blank">
+                        <img src="/images/logo-partner/VC-VESTIGIUM.png" class="img-fluid">
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/VC-ZoomerFund.png" class="img-fluid">
+                    </a>
+                </li>
+                <li class="hidden">
+                    <a href="//blockchaingamer.net/" target="_blank">
+                        <img src="/images/logo-partner/BCGamer_logo_HDNEWS-copy.png" class="img-fluid">
+                    </a>
+                </li>
+                <li class="hidden">
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/kryptort.png" class="img-fluid">
+                    </a>
+                </li>
+                <li class="hidden">
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/Hashnews.png" class="img-fluid">
+                    </a>
+                </li>
+                <li class="hidden">
+                    <a href="" target="_blank">
+                        <img src="/images/logo-partner/pentaxcoin.png" class="img-fluid">
+                    </a>
+                </li>
+            </ul>
+            <div class="ShowMoreBtnSect">
+                <button class="readon white-btn black-shape showMoreLogoBtn">
+                    <span class="btn-text btn-text-1">Show More</span>
+                    <span class="btn-text btn-text2">Show lese</span>
+                    <span class="hover-shape1"></span>
+                    <span class="hover-shape2"></span>
+                    <span class="hover-shape3"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our mentors Section End -->
+<!-- Our mentors Section Start -->
+<!--<div class="gamfi-team-section gamfi_FAQ_Sect gamfi_Our_mentor_section pt-115 pb-85 md-pt-75 md-pb-42">
+    <div class="container">
+        <div class="sec-heading text-center mb-55">
+            <div class="sub-inner  mb-15">
+                <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps2.png" alt="Steps-Image">
+                <span class="ml-10 mr-10 sub-title text-white ">QUESTIONS & ANSWERS</span>
+                <img class="heading-right-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image">
+            </div>
+            <h2 class="title text-success ">FREQUENTLY ASKED QUESTIONS</h2>
+        </div>
+        <div class="FAQContnetSect">
+            <div class="FAQquestions">
+                <h2 class="accordion no-border">
+                    What is Gamfi ?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <h2 class="accordion">
+                    How we can buy and invest token ?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur cites of the word in classical literature.</p>
+                </div>
+
+                <h2 class="accordion">
+                    Why we should choose Gamfi ?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <h2 class="accordion">
+                    Where we can buy and sell Gamfi NFts ?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <h2 class="accordion">
+                    How secure is this token ?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <h2 class="accordion">
+                    What is your contract address ?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>-->
+@*<h6>Don’t get your answer ? <a href="Get-In-touch.html">Ask Here !</a></h6>*@
+<!--<div class="FAQGalaxyImg">
+                <img src="~/client-side/earntoken/assets/images/icons/galaxy_image.png" alt="img" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>-->
+<!-- Our mentors Section End -->

@@ -1,0 +1,175 @@
+﻿
+<!-- Project Section Start -->
+<div class="gamfi-project-section HomeV4_OurProject_Sect main-project-area pb-0">
+    <div class="container">
+        <div class="sec-inner align-items-center d-flex justify-content-between mb-30">
+            <div class="sec-heading">
+                <div class="sub-inner mb-15">
+                    <span class="sub-title">Earn</span>
+                    <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                </div>
+                <h2 class="title">Our Saving</h2>
+            </div>
+            <div class="gamfi-btn-area ProjectV2_TabBtns">
+                <ul>
+                    <li class="ProjectV2_tablinks m-0" onclick="openProject(event, 'ProectV2_OnGoing')" id="OpenProject">
+                        <button class="readon white-btn black-shape">
+                            <span class="btn-text">UPCOMING</span>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </button>
+                    </li>
+
+                    <li class="ProjectV2_tablinks" onclick="openProject(event, 'ProectV2_ENDED')">
+                        <button class="readon white-btn black-shape">
+                            <span class="btn-text">COMPLETE</span>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ProjectV2_TabContentSect">
+            <div id="ProectV2_OnGoing" class="ProjectV2_tabcontent animate_opacity">
+                <div class="gamfi-previous-section V4_OurProjectPreviousSect ProjectClasic_PreviousSection pb-40 md-pb-50">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 p-0">
+                                <div class="previous-mainmenu mb-15">
+                                    <ul class="menu-list">
+                                        <li class="list1 list1Custom">Coin</li>
+                                        <li class="list2 list2Custom">Interest Rate</li>
+                                        <li class="list3 list3Custom">Duration (days)</li>
+                                        <li class="list4 list4Custom">Target Raise</li>
+                                        <li class="Customlist5 list5Custom">Progress</li>
+                                        <li class="list6 list6Custom"></li>
+                                    </ul>
+                                </div>
+                                <div id="tbl-content">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        @await Component.InvokeAsync("AjaxPaging")
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="ProectV2_ENDED" class="ProjectV2_tabcontent animate_opacity">
+                <div class="gamfi-previous-section V4_OurProjectPreviousSect ProjectClasic_PreviousSection pb-140 md-pb-50">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 p-0">
+                                <a href="project-details.html">
+                                    <div class="previous-item hover-shape-border hover-shape-inner">
+                                        <div class="previous-gaming list1Custom">
+                                            <div class="previous-image">
+                                                <img src="~/client-side/earntoken/assets/images/project/privius-image12.png" alt="Previous-Image" />
+                                            </div>
+                                            <div class="previous-price">
+                                                <h4 class="mb-10">Child Class</h4>
+                                                <div class="dsc">price (CCC) = 0.04 BUSD</div>
+                                            </div>
+                                        </div>
+                                        <div class="previous-chaining list2Custom">
+                                            <img src="~/client-side/earntoken/assets/images/project/previous-image.png" alt="Chain-Image" />
+                                        </div>
+                                        <div class="previous-EndsIn list3Custom">
+                                            <span>5 Day Ago</span>
+                                        </div>
+                                        <div class="previous-raise list4Custom">
+                                            <span>150,000 BUSD</span>
+                                        </div>
+                                        <div class="previousProgress list5Custom">
+                                            <div class="ProjectClasicCustomProgressSect">
+                                                <div class="ProgressBg">
+                                                    <div class="ProgressBar ProgressBar93">
+
+                                                    </div>
+                                                </div>
+                                                <p><span class="counter">93</span>%</p>
+                                            </div>
+                                        </div>
+
+
+                                        <span class="border-shadow shadow-1"></span>
+                                        <span class="border-shadow shadow-2"></span>
+                                        <span class="border-shadow shadow-3"></span>
+                                        <span class="border-shadow shadow-4"></span>
+                                        <span class="hover-shape-bg hover_shape1"></span>
+                                        <span class="hover-shape-bg hover_shape2"></span>
+                                        <span class="hover-shape-bg hover_shape3"></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        @*@await Component.InvokeAsync("AjaxPaging")*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- V4 Our Project End -->
+
+<script id="table-template" type="x-tmpl-mustache">
+    <div>
+        <div class="previous-item hover-shape-border hover-shape-inner">
+            <div class="previous-gaming list1Custom">
+                <div class="previous-image">
+                    <img src="{{TokenImageUrl}}" alt="{{Name}}" />
+                </div>
+                <div class="previous-price">
+                    <div class="dsc">{{Name}}</div>
+                    <h6 class="mb-0">{{TokenCode}}</h5>
+                </div>
+            </div>
+            <div class="previous-chaining list2Custom">
+                <div class="dsc InterestRate{{Id}}">
+                    {{InterestRate}}%
+                </div>
+            </div>
+            <div class="previous-EndsIn list3Custom">
+                <div class="dsc">
+                    <ul class="date-listing mb-0">
+                        {{{SavingPeriods}}}
+                    </ul>
+                </div>
+            </div>
+            <div class="previous-raise list4Custom">
+                <span>{{TotalSupply}}</span>
+            </div>
+            <div class="previousProgress list5Custom">
+                <div class="ProjectClasicCustomProgressSect">
+                    <div class="ProgressBg">
+                        <div class="ProgressBar ProgressBar{{PerTotalSaving}}">
+                        </div>
+                    </div>
+                    <p><span class="counter">{{PerTotalSaving}}</span>%</p>
+                </div>
+            </div>
+
+            <div class="previous-EndsIn list6Custom">
+                <a href="/saving/detail/{{Id}}" class="readon hover-shape btn-1 btn-detail" data-id="{{Id}}">
+                    <span class="btn-text">Subscribe</span>
+                    <span class="hover-shape1"></span>
+                    <span class="hover-shape2"></span>
+                    <span class="hover-shape3"></span>
+                </a>
+            </div>
+
+            <span class="border-shadow shadow-1"></span>
+            <span class="border-shadow shadow-2"></span>
+            <span class="border-shadow shadow-3"></span>
+            <span class="border-shadow shadow-4"></span>
+            <span class="hover-shape-bg hover_shape1"></span>
+            <span class="hover-shape-bg hover_shape2"></span>
+            <span class="hover-shape-bg hover_shape3"></span>
+        </div>
+    </div>
+</script>

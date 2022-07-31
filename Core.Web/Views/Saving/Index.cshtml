@@ -1,0 +1,379 @@
+﻿@model HomeViewModel
+
+@section Styles{
+    <link href="~/client-app/controllers/saving/index.css" rel="stylesheet" />
+}
+
+@section Scripts{
+
+    <script src="~/client-app/controllers/saving/index.js"></script>
+    <script>
+        var savingObj = new SavingController();
+        savingObj.initialize();
+    </script>
+}
+
+<!-- Breadcrumbs Section Start -->
+<div class="gamfi-breadcrumbs-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="breadcrumbs-area sec-heading">
+                    <div class="sub-inner mb-15">
+                        <a class="breadcrumbs-link" href="#">Earn</a>
+                        <span class="sub-title">Saving</span>
+                        <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                    </div>
+                    <h2 class="title mb-0">Saving</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 breadcrumbs-form md-mt-30">
+                <div class="btn-area">
+                    <a class="readon black-shape mr-5" href="@Url.Action("History","Saving")">
+                        <span class="btn-text">History</span>
+                    </a>
+                    <a class="readon black-shape" href="@Url.Action("Leaderboard","Saving")">
+                        <span class="btn-text">Leaderboard</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs  Section End -->
+<!-- Project Section Start -->
+<div class="gamfi-project-section HomeV4_OurProject_Sect main-project-area pb-0">
+    <div class="container">
+        <div class="sec-inner align-items-center d-flex justify-content-between mb-30">
+            <div class="sec-heading">
+                @*<div class="sub-inner mb-15">
+                    <span class="sub-title">Earn</span>
+                    <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image" />
+                </div>
+                <h2 class="title">Our Saving</h2>*@
+            </div>
+            <div class="gamfi-btn-area ProjectV2_TabBtns">
+                <ul>
+                    <li class="ProjectV2_tablinks m-0" onclick="openProject(event, 'ProectV2_OnGoing')" id="OpenProject">
+                        <button class="readon white-btn black-shape">
+                            <span class="btn-text">activate</span>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </button>
+                    </li>
+
+                    <li class="ProjectV2_tablinks" onclick="openProject(event, 'ProectV2_ENDED')">
+                        <button class="readon white-btn black-shape">
+                            <span class="btn-text">COMPLETE</span>
+                            <span class="hover-shape1"></span>
+                            <span class="hover-shape2"></span>
+                            <span class="hover-shape3"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ProjectV2_TabContentSect">
+            <div id="ProectV2_OnGoing" class="ProjectV2_tabcontent animate_opacity">
+                <div class="gamfi-previous-section V4_OurProjectPreviousSect ProjectClasic_PreviousSection pb-40 md-pb-50">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 p-0">
+                                <div class="previous-mainmenu mb-15">
+                                    <ul class="menu-list">
+                                        <li class="list1 list1Custom">Coin</li>
+                                        <li class="list2 list2Custom">Interest Rate</li>
+                                        <li class="list3 list3Custom">Duration (days)</li>
+                                        <li class="list4 list4Custom">Target Raise</li>
+                                        <li class="Customlist5 list5Custom">Progress</li>
+                                        <li class="list6 list6Custom"></li>
+                                    </ul>
+                                </div>
+                                <div id="tbl-content">
+
+                                </div>
+
+                                @await Component.InvokeAsync("AjaxPaging")
+                            </div>
+                             
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="ProectV2_ENDED" class="ProjectV2_tabcontent animate_opacity">
+                <div class="gamfi-previous-section V4_OurProjectPreviousSect ProjectClasic_PreviousSection pb-140 md-pb-50">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 p-0">
+
+                            </div>
+                        </div>
+                        @*@await Component.InvokeAsync("AjaxPaging")*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- V4 Our Project End -->
+
+<script id="table-template" type="x-tmpl-mustache">
+    <div>
+        <div class="previous-item hover-shape-border hover-shape-inner">
+            <div class="previous-gaming list1Custom">
+                <div class="previous-image">
+                    <img src="{{TokenImageUrl}}" />
+                </div>
+                <div class="previous-price">
+                    <div class="dsc">{{Name}}</div>
+                    <h6 class="mb-0">{{TokenCode}}</h5>
+                </div>
+            </div>
+            <div class="previous-chaining list2Custom">
+                <div class="dsc InterestRate{{Id}}">
+                    {{InterestRate}}%
+                </div>
+            </div>
+            <div class="previous-EndsIn list3Custom">
+                <div class="dsc">
+                    <ul class="date-listing mb-0">
+                        {{{TimeLines}}}
+                    </ul>
+                </div>
+            </div>
+            <div class="previous-raise list4Custom">
+                <span>{{TotalSupply}}</span>
+            </div>
+            <div class="previousProgress list5Custom">
+                <div class="ProjectClasicCustomProgressSect">
+                    <div class="ProgressBg">
+                        <div class="ProgressBar ProgressBar{{PerTotalSaving}}">
+                        </div>
+                    </div>
+                    <p><span class="counter">{{PerTotalSaving}}</span>%</p>
+                </div>
+            </div>
+
+            <div class="previous-EndsIn list6Custom">
+                <a href="/saving/detail/{{Id}}" class="readon hover-shape btn-1 btn-detail" data-id="{{Id}}">
+                    <span class="btn-text">Subscribe</span>
+                    <span class="hover-shape1"></span>
+                    <span class="hover-shape2"></span>
+                    <span class="hover-shape3"></span>
+                </a>
+            </div>
+
+            <span class="border-shadow shadow-1"></span>
+            <span class="border-shadow shadow-2"></span>
+            <span class="border-shadow shadow-3"></span>
+            <span class="border-shadow shadow-4"></span>
+            <span class="hover-shape-bg hover_shape1"></span>
+            <span class="hover-shape-bg hover_shape2"></span>
+            <span class="hover-shape-bg hover_shape3"></span>
+        </div>
+    </div>
+</script>
+
+@*<div class="gamfi-team-section gamfi_FAQ_Sect gamfi_Our_mentor_section pt-115 pb-85 md-pt-75 md-pb-42">
+    <div class="container">
+        <div class="sec-heading text-center mb-55">
+            <div class="sub-inner  mb-15">
+                <img class="heading-left-image" src="~/client-side/earntoken/assets/images/icons/steps2.png" alt="Steps-Image">
+                <span class="ml-10 mr-10 sub-title">QUESTIONS & ANSWERS</span>
+                <img class="heading-right-image" src="~/client-side/earntoken/assets/images/icons/steps.png" alt="Steps-Image">
+            </div>
+            <h2 class="title">FREQUENTLY ASKED QUESTIONS</h2>
+        </div>
+        <div class="FAQContnetSect">
+            <div class="FAQquestions">
+                <h2 class="accordion no-border">
+                    1.What are Locked Savings?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        Committed to holding your crypto? Now you can earn interest at the same time! Subscribe your crypto to locked savings periods for higher interest earnings.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    2.What happens to my funds on the day I subscribe to a Locked Savings product?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        On the day of subscription, MapNode will deduct the funds for subscription from your exchange wallet.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    3.What happens to my funds when I subscribe them to a flexible savings product?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        After subscribing, you will receive Flexible Savings assets. Interest calculation starts on the second day.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    4.What happens to my funds on the value date of a Locked Savings product?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        On the value date, MapNode Savings will distribute the Locked Savings product to your savings wallet, and your saving product will start to accrue interest.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    5.What happens to my funds on the redemption date of a Locked Savings product?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        On the redemption date, you will see both the initial tokens committed to the subscription and the interest accrued in your MapNode account ‘balances’. This process will be automatic.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    6.If I subscribe to a flexible savings product, when can I redeem my funds?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        Support redemption at any time.(Except 07:50-08:10 HKT daily.)
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    7.How do I redeem my funds from a flexible savings product?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        Click on “Savings Assets” on the “Wallet” dropdown. Select “Flexible Savings” & click on “Redeem” under the “Operations” tab on the product you wish to redeem.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    8.What is the difference between standard redemption and fast redemption?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        Using the standard redemption method, you can redeem your funds the next day and still accrue interest for the period in between.Using the fast redemption method, you may redeem your funds the same day. This method is subject to a daily quota.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    9.How often do I receive interest from a flexible savings product?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        The interest from flexible savings products is distributed directly to your account on a daily basis.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    10.Am I guaranteed to earn interest on MapNode Savings products even if the crypto markets go down?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        Yes. The interest rate on each product is guaranteed.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    11.Are BNB that are subscribed to a MapNode Savings product included in the snapshot calculation for MapNode Launchpad?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        Yes, the full balance of BNB subscribed to any MapNode Savings product will count towards the snapshot calculations for MapNode Launchpad.
+                        That means you can participate in MapNode Launchpad while earning interest on your holdings! Win-win!
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    12.Will MapNode Savings continue to add more products & support for tokens other than those currently available?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        Yes, MapNode Savings will be constantly evaluating new coins/tokens to be supported as saving products. Products will be supported based on demand and delivering the best value to MapNode Savings users.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    13.How is the average annual return (APR) calculated?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        The average annual return (APR) uses the average daily interest rate from the past 7 days, multiplied by 365.
+                    </p>
+                </div>
+
+                <h2 class="accordion">
+                    14.Which cryptocurrencies are supported?
+                    <span>
+                        <img src="~/client-side/earntoken/assets/images/icons/plus.svg" alt="" class="img-fluid IconPlus" />
+                        <img src="~/client-side/earntoken/assets/images/icons/munis.svg" alt="" class="Img-fluid IconMunise" />
+                    </span>
+                </h2>
+                <div class="accordion-panel">
+                    <p>
+                        There are more than 60+ cryptocurrencies that you can use in MapNode Savings. You can choose from dozens of digital assets like Bitcoin, Ethereum, and stablecoins.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@

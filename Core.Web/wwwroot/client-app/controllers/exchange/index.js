@@ -59,7 +59,7 @@
             be.confirm('Confirm to buy token', 'Are you sure to buy amount ' + amount + ' BNB', function () {
                 $.ajax({
                     type: "POST",
-                    url: "/Exchange/ConfirmExchangeToken",
+                    url: "/Exchange/******",
                     headers: {
                         "XSRF-TOKEN": $('input:hidden[name="__RequestVerificationToken"]').val()
                     },

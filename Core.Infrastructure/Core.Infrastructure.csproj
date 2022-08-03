@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Core.Utilities\Core.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SmartContracts\FunctionMessages\" />
+  </ItemGroup>
+
 </Project>

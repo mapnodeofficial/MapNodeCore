@@ -15,22 +15,30 @@
     <Compile Remove="wwwroot\admin-side\metronic\**" />
     <Compile Remove="wwwroot\client-side\metadefi\**" />
     <Compile Remove="wwwroot\client-side\metafish\**" />
+    <Compile Remove="wwwroot\ecosystem\**" />
     <Compile Remove="wwwroot\icons\**" />
+    <Compile Remove="wwwroot\Winwheel\**" />
     <Content Remove="wwwroot\admin-side\css-spinner-master\**" />
     <Content Remove="wwwroot\admin-side\metronic\**" />
     <Content Remove="wwwroot\client-side\metadefi\**" />
     <Content Remove="wwwroot\client-side\metafish\**" />
+    <Content Remove="wwwroot\ecosystem\**" />
     <Content Remove="wwwroot\icons\**" />
+    <Content Remove="wwwroot\Winwheel\**" />
     <EmbeddedResource Remove="wwwroot\admin-side\css-spinner-master\**" />
     <EmbeddedResource Remove="wwwroot\admin-side\metronic\**" />
     <EmbeddedResource Remove="wwwroot\client-side\metadefi\**" />
     <EmbeddedResource Remove="wwwroot\client-side\metafish\**" />
+    <EmbeddedResource Remove="wwwroot\ecosystem\**" />
     <EmbeddedResource Remove="wwwroot\icons\**" />
+    <EmbeddedResource Remove="wwwroot\Winwheel\**" />
     <None Remove="wwwroot\admin-side\css-spinner-master\**" />
     <None Remove="wwwroot\admin-side\metronic\**" />
     <None Remove="wwwroot\client-side\metadefi\**" />
     <None Remove="wwwroot\client-side\metafish\**" />
+    <None Remove="wwwroot\ecosystem\**" />
     <None Remove="wwwroot\icons\**" />
+    <None Remove="wwwroot\Winwheel\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,16 +55,6 @@
     <Content Remove="wwwroot\client-side\earntoken\assets\js\amcharts\animated.js" />
     <Content Remove="wwwroot\client-side\earntoken\assets\js\amcharts\charts.js" />
     <Content Remove="wwwroot\client-side\earntoken\assets\js\amcharts\core.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Views\EmailTemplate\sendmail.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Views\EmailTemplate\sendmail.html">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +77,9 @@
     <Folder Include="Areas\Admin\Views\Home\Partials\" />
     <Folder Include="Logs\" />
     <Folder Include="Models\Reponses\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="wwwroot\admin-app\controllers\function\" />
+    <Folder Include="wwwroot\admin-app\controllers\meta-mask\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -102,23 +103,6 @@
     <None Include="wwwroot\client-side\earntoken\assets\js\amcharts\charts.js" />
     <None Include="wwwroot\client-side\earntoken\assets\js\amcharts\core.js" />
     <None Include="wwwroot\admin-app\controllers\feedback\index.js" />
-    <None Include="wwwroot\ecosystem\.gitignore" />
-    <None Include="wwwroot\ecosystem\css\basics.scss" />
-    <None Include="wwwroot\ecosystem\css\data.scss" />
-    <None Include="wwwroot\ecosystem\css\images.scss" />
-    <None Include="wwwroot\ecosystem\css\legends.scss" />
-    <None Include="wwwroot\ecosystem\css\lighting.scss" />
-    <None Include="wwwroot\ecosystem\css\responsive.scss" />
-    <None Include="wwwroot\ecosystem\css\styles.scss" />
-    <None Include="wwwroot\ecosystem\css\transitions.scss" />
-    <None Include="wwwroot\ecosystem\css\ui.scss" />
-    <None Include="wwwroot\ecosystem\css\views.scss" />
-    <None Include="wwwroot\ecosystem\js\jquery.1.9.1.js" />
-    <None Include="wwwroot\ecosystem\js\jquery.min.js" />
-    <None Include="wwwroot\ecosystem\js\prefixfree.min.js" />
-    <None Include="wwwroot\ecosystem\js\scripts.js" />
-    <None Include="wwwroot\ecosystem\js\scripts.min.js" />
-    <None Include="wwwroot\ecosystem\README.md" />
     <None Include="wwwroot\lib\jstree\jstree.bundle.js" />
     <None Include="wwwroot\lib\notify\js\jquery.growl.js" />
     <None Include="wwwroot\lib\notify\js\jquery.js" />
@@ -126,11 +110,6 @@
     <None Include="wwwroot\lib\notify\js\rainbow.js" />
     <None Include="wwwroot\lib\notify\js\sample.js" />
     <None Include="wwwroot\lib\sweet-alert\sweetalert.min.js" />
-    <None Include="wwwroot\Winwheel\examples\.gitignore" />
-    <None Include="wwwroot\Winwheel\LICENSE" />
-    <None Include="wwwroot\Winwheel\README.md" />
-    <None Include="wwwroot\Winwheel\Winwheel.js" />
-    <None Include="wwwroot\Winwheel\Winwheel.min.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ar.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\bg.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\cs.js" />
@@ -273,24 +252,12 @@
     <Content Update="Areas\Admin\Views\Wallet\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Admin\Views\BlogCategory\Index.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Areas\Admin\Views\BlogCategory\_AddEditModal.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Areas\Admin\Views\MenuItem\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Admin\Views\MenuItem\_AddEditModal.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Areas\Admin\Views\Blog\Index.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Areas\Admin\Views\Blog\_AddEditModal.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Admin\Views\Function\_AddEditModal.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
@@ -310,12 +277,6 @@
     <Content Update="Views\Account\ResetPasswordConfirmation.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\EmailTemplate\_ForgotPassword.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Views\EmailTemplate\_VerifyAccount.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\Shared\Backup\_Footer.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -331,16 +292,10 @@
     <Content Update="Views\Shared\_ModalUtility.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Shared\_HeaderBlog.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\Shared\_Header.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\_Footer.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Views\Shared\_LayoutPresale.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="wwwroot\client-app\controllers\feedback\index.js">

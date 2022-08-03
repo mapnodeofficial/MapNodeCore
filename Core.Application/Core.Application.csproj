@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\Fishing\**" />
+    <Compile Remove="ViewModels\Staking\**" />
+    <EmbeddedResource Remove="ViewModels\Fishing\**" />
+    <EmbeddedResource Remove="ViewModels\Staking\**" />
+    <None Remove="ViewModels\Fishing\**" />
+    <None Remove="ViewModels\Staking\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="EPPlus" Version="6.0.6" />
     <PackageReference Include="ExcelDataReader" Version="3.6.0" />
@@ -18,10 +27,5 @@
     <ProjectReference Include="..\Core.Data.EF\Core.Data.EF.csproj" />
     <ProjectReference Include="..\Core.Data\Core.Data.csproj" />
     <ProjectReference Include="..\Core.Utilities\Core.Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\Fishing\" />
-    <Folder Include="ViewModels\Staking\" />
   </ItemGroup>
 </Project>
